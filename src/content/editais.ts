@@ -17,6 +17,12 @@ export interface Edital {
   exemplo?: boolean;
   /** Adicionado pelo robô semanal (ver src/app/api/cron/atualizar-editais) — pede confirmação humana de prazo/valor. */
   detectadoAutomaticamente?: boolean;
+  /**
+   * Edital real e nomeado corretamente, mas cujo status/prazo atual não pôde
+   * ser confirmado direto na fonte no momento em que foi cadastrado aqui —
+   * pede confirmação antes de divulgar, sem ser conteúdo fabricado.
+   */
+  confirmarNaFonte?: boolean;
 }
 
 interface EditalAuto {
@@ -31,35 +37,44 @@ interface EditalAuto {
 const editaisAuto = editaisAutoRaw as EditalAuto[];
 
 /**
- * Conteúdo inicial de demonstração. Nesta fase (sem painel administrativo),
- * a lista real é mantida aqui pela equipe técnica; a Fase 2 substitui este
- * arquivo por um painel onde o próprio Comitê cadastra e atualiza os editais,
- * sem depender de deploy.
+ * Levantamento feito por busca em 02/09/2026. Nesta fase (sem painel
+ * administrativo), a lista real é mantida aqui pela equipe técnica — segundo
+ * combinado com o Comitê, as próximas atualizações serão manuais.
+ *
+ * Não foi possível abrir cultura.ma.gov.br nem saoluis.ma.gov.br diretamente
+ * (bloqueio de rede do ambiente usado nesta busca) para confirmar prazo e
+ * status em tempo real — por isso os dois itens abaixo estão marcados
+ * `confirmarNaFonte: true`. São chamamentos da Política Nacional Aldir Blanc
+ * (PNAB), programa federal irmão da Lei Paulo Gustavo e administrado pelas
+ * mesmas secretarias de cultura — não encontramos, nesta busca, nenhum
+ * edital com a marca "Lei Paulo Gustavo" com inscrições abertas agora no
+ * Maranhão; os editais estaduais e municipais da LPG localizados já
+ * encerraram inscrições.
  */
 const editaisManuais: Edital[] = [
   {
-    id: "exemplo-estadual-premiacao",
-    titulo: "Edital de Premiação — Lei Paulo Gustavo (exemplo)",
+    id: "estadual-secma-pnab-001-2026",
+    titulo: "Chamamento Público nº 001/2026 — SECMA/PNAB",
     esfera: "estadual",
-    orgao: "Secretaria de Estado da Cultura do Maranhão (SECULT-MA)",
-    areas: ["Artes visuais", "Música", "Teatro"],
+    orgao: "Secretaria de Estado da Cultura do Maranhão (SECMA)",
+    areas: ["Política Nacional Aldir Blanc (PNAB)"],
     status: "aberto",
-    linkOficial: "https://www.cultura.ma.gov.br/programas-ou-campanhas/editais-lei-paulo-gustavo",
+    linkOficial: "https://www.cultura.ma.gov.br/programas-ou-campanhas/editais-secma",
     resumo:
-      "Conteúdo de exemplo para validar o layout. Confirme título, prazo e valor na fonte oficial antes de publicar.",
-    exemplo: true,
+      "Chamamento da SECMA no âmbito da Política Nacional Aldir Blanc (PNAB) — não é edital da Lei Paulo Gustavo, mas programa federal irmão, administrado pela mesma secretaria.",
+    confirmarNaFonte: true,
   },
   {
-    id: "exemplo-municipal-chamamento",
-    titulo: "Chamamento Público — Lei Paulo Gustavo São Luís (exemplo)",
+    id: "municipal-secult-sl-pnab-2026",
+    titulo: "Chamamento Público — SECULT-SL/PNAB",
     esfera: "municipal",
     orgao: "Secretaria Municipal de Cultura de São Luís (SECULT-SL)",
-    areas: ["Audiovisual", "Cultura popular"],
-    status: "em-breve",
+    areas: ["Política Nacional Aldir Blanc (PNAB)"],
+    status: "aberto",
     linkOficial: "https://www.saoluis.ma.gov.br/secult/editais",
     resumo:
-      "Conteúdo de exemplo para validar o layout. Confirme título, prazo e valor na fonte oficial antes de publicar.",
-    exemplo: true,
+      "Referência a um chamamento da SECULT-SL no âmbito da Política Nacional Aldir Blanc (PNAB) encontrada nesta busca, sem confirmação direta na fonte municipal — não é edital da Lei Paulo Gustavo.",
+    confirmarNaFonte: true,
   },
 ];
 

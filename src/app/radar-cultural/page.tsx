@@ -57,7 +57,7 @@ export default function RadarCulturalPage() {
       </div>
 
       <p className="max-w-2xl text-xs text-ink-faint">
-        Seus dados ficam com o Comitê Paulo Gustavo Maranhão e são usados só para o que está
+        Seus dados ficam com o Comitê Maranhão e são usados só para o que está
         descrito acima: te indicar para oportunidades e te avisar de editais. Você pode pedir a
         remoção deles quando quiser, falando com o Comitê pelo{" "}
         <a href="/participe" className="underline">

@@ -1,4 +1,4 @@
-# Comitê Paulo Gustavo Maranhão — site institucional
+# Comitê Maranhão — site institucional
 
 Site do **Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura
 Paulo Gustavo**, com editais abertos (Estado do Maranhão e São Luís) e links oficiais para

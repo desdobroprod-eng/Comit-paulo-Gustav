@@ -1,4 +1,4 @@
-# Comitê Paulo Gustavo Maranhão — site institucional
+# Comitê Maranhão — site institucional
 
 Next.js (App Router) + TypeScript + Tailwind v4. Ver README.md para detalhes de conteúdo e stack.
 

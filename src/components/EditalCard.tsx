@@ -32,6 +32,12 @@ export function EditalCard({ edital }: { edital: Edital }) {
           Detectado automaticamente na fonte oficial — confirme prazo e valor antes de divulgar.
         </p>
       )}
+      {edital.confirmarNaFonte && (
+        <p className="rounded-lg bg-surface-alt px-3 py-2 text-xs text-ink-faint">
+          Não confirmamos prazo e status em tempo real na fonte oficial — confira antes de
+          divulgar.
+        </p>
+      )}
       <TrackedLink
         href={edital.linkOficial}
         eventName="clique_edital"

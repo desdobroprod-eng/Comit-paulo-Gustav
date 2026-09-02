@@ -16,9 +16,11 @@ export default function EditaisPage() {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-ink">Editais abertos</h1>
         <p className="max-w-2xl text-ink-soft">
-          Reunimos aqui os editais da Lei Paulo Gustavo no Estado do Maranhão e na capital São
-          Luís. Em breve ampliamos para outros municípios. O botão de cada edital leva direto à
-          publicação oficial — inscreva-se sempre por lá.
+          Reunimos aqui os editais de fomento à cultura do Estado do Maranhão e da capital São
+          Luís — da Lei Paulo Gustavo e da Política Nacional Aldir Blanc (PNAB), programa
+          federal irmão, administrado pelas mesmas secretarias. Em breve ampliamos para outros
+          municípios. O botão de cada edital leva direto à publicação oficial — inscreva-se
+          sempre por lá.
         </p>
       </div>
 

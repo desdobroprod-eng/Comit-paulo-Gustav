@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Participe",
-  description: "Redes oficiais e grupos de WhatsApp do Comitê Paulo Gustavo Maranhão.",
+  description: "Redes oficiais e grupos de WhatsApp do Comitê Maranhão do Movimento Paulo Gustavo.",
 };
 
 export default function ParticipePage() {

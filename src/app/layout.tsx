@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   description: site.descricao,
   keywords: [
     "Lei Paulo Gustavo",
-    "Comitê Paulo Gustavo Maranhão",
+    "Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo",
     "editais de cultura Maranhão",
     "editais São Luís",
     "certidão negativa cultura",
