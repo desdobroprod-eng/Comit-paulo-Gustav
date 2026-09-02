@@ -14,7 +14,7 @@ export function Footer() {
           alt="Logotipo — Lei Paulo Gustavo"
           width={140}
           height={53}
-          className="h-9 w-auto rounded-md"
+          className="h-9 w-auto self-start rounded-md"
         />
         <p className="font-medium text-ink">{site.nomeOficial}</p>
         <p>{site.tagline}</p>

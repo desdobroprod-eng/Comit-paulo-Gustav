@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { TrackedLink } from "@/components/TrackedLink";
-import { site } from "@/lib/site";
+import { basePath, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Participe",
@@ -21,7 +21,7 @@ export default function ParticipePage() {
       <Container className="flex flex-col gap-8 py-14">
       <div className="grid gap-4 sm:grid-cols-2">
         <TrackedLink
-          href="/r/grupo-whatsapp-1"
+          href={`${basePath}/r/grupo-whatsapp-1`}
           eventName="clique_grupo_whatsapp"
           eventParams={{ grupo: "1" }}
           className="rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-1 hover:border-amber-deep hover:shadow-md"
@@ -30,7 +30,7 @@ export default function ParticipePage() {
           <p className="mt-2 text-sm text-ink-soft">Entrar no grupo geral do Comitê →</p>
         </TrackedLink>
         <TrackedLink
-          href="/r/grupo-whatsapp-2"
+          href={`${basePath}/r/grupo-whatsapp-2`}
           eventName="clique_grupo_whatsapp"
           eventParams={{ grupo: "2" }}
           className="rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-1 hover:border-amber-deep hover:shadow-md"

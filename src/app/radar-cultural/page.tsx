@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 
@@ -61,9 +62,9 @@ export default function RadarCulturalPage() {
           Seus dados ficam só com o Comitê e servem só pro que está descrito acima: te
           indicar pra oportunidades e te avisar de edital. Quer que a gente apague? É só chamar o
           Comitê no{" "}
-          <a href="/participe" className="underline">
+          <Link href="/participe" className="underline">
             WhatsApp ou Instagram
-          </a>
+          </Link>
           .
         </p>
       </Container>

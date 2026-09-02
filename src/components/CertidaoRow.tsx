@@ -8,7 +8,7 @@ const rotuloPara: Record<Certidao["paraQuem"][number], string> = {
 
 export function CertidaoRow({ certidao }: { certidao: Certidao }) {
   return (
-    <div className="flex flex-col gap-2 border-b border-border py-5 last:border-none sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+    <div className="flex flex-col gap-2 border-b border-border px-6 py-5 transition last:border-none hover:bg-surface-alt sm:flex-row sm:items-start sm:justify-between sm:gap-6">
       <div className="max-w-2xl">
         <p className="font-semibold text-ink">{certidao.nome}</p>
         <p className="mt-1 text-sm text-ink-soft">{certidao.orgao}</p>
@@ -25,7 +25,7 @@ export function CertidaoRow({ certidao }: { certidao: Certidao }) {
         href={certidao.link}
         eventName="clique_certidao"
         eventParams={{ certidao_id: certidao.id, esfera: certidao.esfera }}
-        className="inline-flex h-fit shrink-0 items-center gap-1.5 rounded-lg border border-border bg-surface-alt px-4 py-2 text-sm font-medium text-ink hover:border-amber-deep"
+        className="inline-flex h-fit shrink-0 items-center gap-1.5 rounded-lg border border-border bg-surface-alt px-4 py-2 text-sm font-medium text-ink transition hover:-translate-y-0.5 hover:border-amber-deep hover:shadow-sm"
       >
         Emitir certidão ↗
       </TrackedLink>

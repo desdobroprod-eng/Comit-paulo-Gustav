@@ -30,7 +30,7 @@ export default function CertidoesPage() {
               <h2 className="font-mono text-xs uppercase tracking-wide text-amber-deep">
                 {esferaLabel[esfera]}
               </h2>
-              <div className="rounded-2xl border border-border bg-surface px-6">
+              <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
                 {grupo.map((certidao) => (
                   <CertidaoRow key={certidao.id} certidao={certidao} />
                 ))}
@@ -41,7 +41,7 @@ export default function CertidoesPage() {
 
         <div className="rounded-2xl border border-border bg-surface-alt p-6">
           <p className="text-sm text-ink-soft">
-            Link fora do ar ou mudou de endereço? A própria SECMA mantém uma página com os
+            Link fora do ar ou mudou de endereço? A própria SECULT-MA mantém uma página com os
             links que ela cobra nos editais — vale como segunda fonte:
           </p>
           <a
