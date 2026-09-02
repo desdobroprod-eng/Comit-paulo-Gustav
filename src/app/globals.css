@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #fff8ec;
+  --color-surface: #ffffff;
+  --color-surface-alt: #fbefd9;
+  --color-ink: #221b14;
+  --color-ink-soft: #5c4f3f;
+  --color-ink-faint: #8a7a64;
+  --color-amber: #fea813;
+  --color-amber-deep: #a8620a;
+  --color-violet: #5c60b0;
+  --color-turquoise: #1e8b8e;
+  --color-terracotta: #c96a47;
+  --color-sand: #8f723e;
+  --color-border: rgba(34, 27, 20, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1b1611;
+    --color-surface: #241e17;
+    --color-surface-alt: #2e2519;
+    --color-ink: #f5eee1;
+    --color-ink-soft: #cbbba4;
+    --color-ink-faint: #93826a;
+    --color-amber: #ffb833;
+    --color-amber-deep: #ffd27a;
+    --color-violet: #9a9ee8;
+    --color-turquoise: #5ad0d3;
+    --color-terracotta: #efa07e;
+    --color-sand: #d8b87c;
+    --color-border: rgba(245, 238, 225, 0.14);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-amber: var(--color-amber);
+  --color-amber-deep: var(--color-amber-deep);
+  --color-violet: var(--color-violet);
+  --color-turquoise: var(--color-turquoise);
+  --color-terracotta: var(--color-terracotta);
+  --color-sand: var(--color-sand);
+  --color-border: var(--color-border);
+  --font-display: var(--font-fredoka);
+  --font-body: var(--font-work-sans);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), ui-rounded, system-ui, sans-serif;
+  text-wrap: balance;
+}

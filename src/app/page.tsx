@@ -1,0 +1,81 @@
+import Link from "next/link";
+import { Container } from "@/components/Container";
+import { EditalCard } from "@/components/EditalCard";
+import { editais } from "@/content/editais";
+import { site } from "@/lib/site";
+
+export default function Home() {
+  const destaques = editais.filter((e) => e.status !== "encerrado").slice(0, 2);
+
+  return (
+    <>
+      <section className="border-b border-border bg-surface-alt py-16">
+        <Container className="flex flex-col gap-5">
+          <span className="font-mono text-xs uppercase tracking-wide text-amber-deep">
+            {site.nomeCurto}
+          </span>
+          <h1 className="max-w-2xl text-4xl font-semibold text-ink sm:text-5xl">
+            {site.tagline}
+          </h1>
+          <p className="max-w-xl text-lg text-ink-soft">{site.descricao}</p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Link
+              href="/editais"
+              className="rounded-lg bg-amber px-5 py-3 font-display text-sm font-semibold text-ink hover:brightness-95"
+            >
+              Ver editais abertos
+            </Link>
+            <Link
+              href="/certidoes"
+              className="rounded-lg border border-border bg-surface px-5 py-3 text-sm font-medium text-ink hover:border-amber-deep"
+            >
+              Emitir certidões
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14">
+        <Container className="flex flex-col gap-6">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-2xl font-semibold text-ink">Editais em destaque</h2>
+            <Link href="/editais" className="text-sm font-medium text-turquoise hover:underline">
+              Ver todos →
+            </Link>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {destaques.map((edital) => (
+              <EditalCard key={edital.id} edital={edital} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-t border-border bg-surface-alt py-14">
+        <Container className="grid gap-8 sm:grid-cols-3">
+          <div>
+            <h3 className="font-display text-lg font-semibold text-ink">Articulação</h3>
+            <p className="mt-2 text-sm text-ink-soft">
+              Reunimos fazedores e fazedoras de cultura do Maranhão para acompanhar de perto a
+              execução da Lei Paulo Gustavo.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-lg font-semibold text-ink">Cobrança institucional</h3>
+            <p className="mt-2 text-sm text-ink-soft">
+              Solicitamos e cobramos o poder público estadual e municipal por transparência e
+              cumprimento de prazos.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-lg font-semibold text-ink">Acesso facilitado</h3>
+            <p className="mt-2 text-sm text-ink-soft">
+              Centralizamos editais abertos e os links oficiais de certidão negativa para agilizar
+              sua inscrição.
+            </p>
+          </div>
+        </Container>
+      </section>
+    </>
+  );
+}
