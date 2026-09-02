@@ -91,10 +91,14 @@ rodando sozinho.
 
 ## Radar Cultural MA
 
-`/radar-cultural` é o cadastro de fazedores e fazedoras de cultura. A pedido do Comitê, o
-formulário é feito no Google Forms (não Jotform). A página lê a URL do formulário da variável
-`NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL` (ver acima) — assim que o formulário existir, é só colar
-a URL lá, sem tocar em código.
+`/radar-cultural` é o cadastro de fazedores e fazedoras de cultura, feito no Google Forms (não
+Jotform, a pedido do Comitê). A URL atual está fixa em `FORMULARIO_PADRAO`, em
+`src/app/radar-cultural/page.tsx`. Pra trocar sem editar código, defina a Variable
+`NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL` (ver acima) — ela sobrescreve o padrão.
+
+O conteúdo do formulário (perguntas, ordem, obrigatoriedade) precisa ser editado direto no
+Google Forms — nenhuma ferramenta conectada aqui tem acesso à API do Google Forms, só
+Drive/Gmail/Calendar. A lista de campos sugerida está no histórico da conversa com o Comitê.
 
 ## Créditos de autoria
 
