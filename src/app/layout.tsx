@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.nomeCurto} — Editais e certidões da Lei Paulo Gustavo`,
+    default: `${site.nomeCurto} — Editais de fomento à cultura e certidões`,
     template: `%s | ${site.nomeCurto}`,
   },
   description: site.descricao,

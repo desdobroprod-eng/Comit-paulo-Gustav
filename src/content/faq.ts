@@ -16,9 +16,9 @@ export const faq: FaqItem[] = [
       "É o Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo, um grupo de sociedade civil formado por fazedores e fazedoras de cultura do Maranhão. Ele não é órgão público: acompanha, articula e cobra do poder público estadual e municipal a execução da Lei Paulo Gustavo no Estado.",
   },
   {
-    pergunta: "Quais editais da Lei Paulo Gustavo estão abertos no Maranhão?",
+    pergunta: "Tem edital da Lei Paulo Gustavo aberto agora no Maranhão?",
     resposta:
-      "Em comitepaulogustavo.ma/editais o Comitê reúne os editais de fomento à cultura abertos do Estado do Maranhão (SECMA) e do município de São Luís (SECULT-SL) — da Lei Paulo Gustavo e também da Política Nacional Aldir Blanc (PNAB), o programa federal irmão administrado pelas mesmas secretarias —, cada um com link direto pra publicação oficial. Pra lista sempre atualizada na fonte, é só ir direto na SECMA e na Prefeitura de São Luís.",
+      "Não sempre — e é bom checar antes de sair procurando. Em comitepaulogustavo.ma/editais o Comitê mostra o que está de fato aberto agora no Estado (SECMA) e em São Luís (SECULT-SL), identificando se é um edital da própria Lei Paulo Gustavo ou da Política Nacional Aldir Blanc (PNAB), o programa federal irmão administrado pelas mesmas secretarias — as duas coisas não são a mesma lei, e o site nunca apresenta uma pela outra. Pra conferir direto na fonte oficial, sem depender do Comitê pra isso, veja a SECMA e a Prefeitura de São Luís.",
   },
   {
     pergunta: "Como emitir certidão negativa para participar de edital cultural no Maranhão?",

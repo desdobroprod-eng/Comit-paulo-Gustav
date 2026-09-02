@@ -42,7 +42,7 @@ export default function OpengraphImage() {
           {site.tagline}
         </div>
         <div style={{ marginTop: 28, fontSize: 30, color: "#5C4F3F", maxWidth: 900 }}>
-          Editais abertos e certidões da Lei Paulo Gustavo no Maranhão
+          Editais de fomento à cultura e certidões negativas no Maranhão
         </div>
         <div
           style={{

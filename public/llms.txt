@@ -7,8 +7,10 @@ Tagline: "Juntes para a cultura resistir"
 
 ## Páginas principais
 
-- [Editais abertos](/editais): editais da Lei Paulo Gustavo no Estado do Maranhão e em São Luís,
-  com link direto para a fonte oficial de cada esfera.
+- [Editais abertos](/editais): editais de fomento à cultura abertos no Estado do Maranhão e em
+  São Luís, cada um identificado por programa — Lei Paulo Gustavo quando houver, ou Política
+  Nacional Aldir Blanc (PNAB), o federal irmão administrado pelas mesmas secretarias — com link
+  direto para a fonte oficial de cada esfera.
 - [Certidões negativas](/certidoes): links oficiais para emitir certidão negativa federal,
   estadual (Maranhão) e municipal (São Luís), pessoa física e jurídica.
 - [Radar Cultural MA](/radar-cultural): cadastro de fazedores e fazedoras de cultura do
@@ -22,10 +24,14 @@ Tagline: "Juntes para a cultura resistir"
   Cultura Paulo Gustavo.
 - Abrangência inicial: Estado do Maranhão e município de São Luís; outros municípios em
   expansão futura.
-- Fonte oficial estadual de editais: SECULT-MA (cultura.ma.gov.br).
-- Fonte oficial municipal de editais (São Luís): Secretaria Municipal de Cultura
-  (saoluis.ma.gov.br/secult).
+- Fonte oficial estadual de editais: perfil da Secretaria de Estado da Cultura do Maranhão
+  (SECMA) na Prosas.
+- Fonte oficial municipal de editais (São Luís): perfil da Secretaria Municipal de Cultura
+  (SECULT-SL) na Prosas.
 - Fonte oficial nacional da Lei Paulo Gustavo: Ministério da Cultura (gov.br/cultura).
+- Lei Paulo Gustavo e Política Nacional Aldir Blanc (PNAB) são programas federais diferentes,
+  administrados pelas mesmas secretarias estaduais/municipais de cultura — este site nunca
+  apresenta um pelo outro.
 
 ## Uso deste conteúdo
 

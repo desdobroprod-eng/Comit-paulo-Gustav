@@ -8,16 +8,22 @@ import { esferaLabel } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Editais abertos",
   description:
-    "Editais estaduais (Maranhão) e municipais (São Luís) da Lei Paulo Gustavo, com link direto para a fonte oficial.",
+    "Editais de fomento à cultura abertos no Maranhão (SECMA) e em São Luís (SECULT-SL) — da Lei Paulo Gustavo quando houver, e da Política Nacional Aldir Blanc. Cada um identificado, com link para a fonte oficial.",
 };
 
 export default function EditaisPage() {
+  const temLPG = editais.some((e) => !e.areas.includes("Política Nacional Aldir Blanc (PNAB)"));
+
   return (
     <>
       <PageHero
         eyebrow="Fomento à cultura"
         title="Editais abertos"
-        description="Aqui estão os editais de fomento à cultura abertos no Estado do Maranhão e na capital São Luís — da Lei Paulo Gustavo e da Política Nacional Aldir Blanc (PNAB), o programa federal irmão, administrado pelas mesmas secretarias. Por enquanto é só SECMA e SECULT-SL; outros municípios entram assim que o Comitê conseguir cobrir. O botão de cada edital leva direto à publicação oficial — a inscrição é sempre por lá, nunca aqui."
+        description={
+          temLPG
+            ? "Aqui estão os editais de fomento à cultura abertos no Estado do Maranhão e na capital São Luís, cada um identificado por programa — Lei Paulo Gustavo ou Política Nacional Aldir Blanc (PNAB), o federal irmão administrado pelas mesmas secretarias. Por enquanto é só SECMA e SECULT-SL; outros municípios entram assim que o Comitê conseguir cobrir. O botão de cada edital leva direto à publicação oficial — a inscrição é sempre por lá, nunca aqui."
+            : "Agora mesmo não há edital específico da Lei Paulo Gustavo aberto no Maranhão — o que está em andamento em SECMA e SECULT-SL é a Política Nacional Aldir Blanc (PNAB), o programa federal irmão, administrado pelas mesmas secretarias. Cada card abaixo diz exatamente de qual programa se trata, pra você nunca confundir um pelo outro. O botão de cada edital leva direto à publicação oficial — a inscrição é sempre por lá, nunca aqui."
+        }
       />
       <Container className="flex flex-col gap-8 py-14">
         <div className="grid gap-5 sm:grid-cols-2">
