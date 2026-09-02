@@ -19,6 +19,82 @@ Abra [http://localhost:3000](http://localhost:3000).
 - Tailwind CSS v4 — tokens de marca em `src/app/globals.css`
 - Deploy: **GitHub Pages**, via GitHub Actions (`.github/workflows/deploy.yml`)
 
+## SDD — Documento de Design do Sistema
+
+Visão geral de arquitetura, pra quem chega no projeto sem ter acompanhado a conversa toda.
+
+### Objetivo
+
+Site institucional estático que resolve três problemas concretos do Comitê: (1) centralizar
+editais de fomento à cultura abertos no MA/São Luís, (2) reunir os links oficiais de emissão
+de certidão negativa exigidos nesses editais, (3) cadastrar fazedores e fazedoras de cultura
+(Radar Cultural) pra indicação a produtores/curadores e aviso de edital por área/município.
+
+### Restrição que define a arquitetura
+
+GitHub Pages só serve arquivo estático — sem servidor, sem banco de dados, sem rota de API.
+Toda peça "dinâmica" do site (redirect de link, robô de atualização, formulário) teve que ser
+resolvida sem depender de um backend próprio: redirect virou página estática com JS,
+atualização de dados virou workflow do GitHub Actions que comita direto no repositório, e
+cadastro de usuário foi delegado ao Google Forms.
+
+### Diagrama
+
+```mermaid
+flowchart LR
+    subgraph gha_deploy["GitHub Actions — deploy.yml"]
+        push["push na branch"] --> build["next build (output: export)"]
+        build --> pages["GitHub Pages"]
+    end
+
+    subgraph gha_robo["GitHub Actions — atualizar-editais.yml (cron semanal)"]
+        cron["Segunda 09h BRT"] --> scraper["scripts/atualizar-editais.ts"]
+        scraper -->|"perfis na Prosas: SECMA e SECULT-SL"| detecta["Edital novo?"]
+        detecta -->|sim| commit["commit + push em editais-auto.json"]
+        commit --> push
+    end
+
+    pages --> site["Site público (comitê + visitante)"]
+    site --> ga4["Google Analytics 4"]
+    site -->|iframe| forms["Google Forms — Radar Cultural"]
+```
+
+### Componentes
+
+| Componente | Onde mora | Responsabilidade |
+| --- | --- | --- |
+| Páginas (`src/app/**/page.tsx`) | build estático | conteúdo e layout de cada rota |
+| Conteúdo estruturado (`src/content/*.ts`) | build estático | editais, certidões, FAQ — dados que viram HTML no build |
+| `editais-auto.json` | commitado no repo | achados do robô semanal, mesclados com `editais.ts` em runtime de build |
+| `scripts/atualizar-editais.ts` | roda só no Actions | scraper — não faz parte do bundle do site |
+| Analytics (`GoogleAnalytics.tsx`, `TrackedLink.tsx`) | client-side | GA4, condicional a `NEXT_PUBLIC_GA_MEASUREMENT_ID` existir |
+| Radar Cultural | iframe pra fora | Google Forms hospeda o formulário e as respostas — o site não guarda dado nenhum |
+| `/r/[slug]` | build estático | página por link de convite (WhatsApp), redirect via JS |
+
+### Decisões e por quê
+
+- **GitHub Pages em vez de Vercel:** zero conta nova, zero token manual pra criar (ver histórico
+  da conversa — foi trocado depois de já estar rodando na Vercel). Custo: perde SSR/API routes,
+  daí as três adaptações acima.
+- **Robô de editais com `confirmarNaFonte`/`detectadoAutomaticamente` em vez de publicar direto:**
+  o scraper lê link e texto do link, não o conteúdo do edital — prazo e valor errados num site
+  civil tem custo real pra quem depende disso. Marca em vez de confiar sem checar.
+- **Radar Cultural no Google Forms em vez de banco próprio:** cadastro de dado pessoal
+  (contato, cidade, área de atuação) pedia storage com controle de acesso — GitHub Pages não
+  tem onde guardar isso com segurança. Google Forms resolve sem exigir infraestrutura nova.
+- **Fonte de editais é a Prosas, não o site de cada governo:** a pedido do Comitê — perfil
+  único por órgão, mais fácil de ler manualmente também.
+
+### Limitações conhecidas
+
+- O scraper nunca rodou contra o HTML real da Prosas (ambiente de desenvolvimento usado pra
+  escrever isso bloqueia acesso à internet) — primeira execução real precisa de conferência manual.
+- Sem painel administrativo: conteúdo de editais/certidões é editado direto no código (Fase 2
+  no roadmap).
+- PNAB (Política Nacional Aldir Blanc) e Lei Paulo Gustavo são programas diferentes,
+  administrados pelas mesmas secretarias — o site mostra os dois, sempre identificando qual é
+  qual, pra não passar um pelo outro.
+
 ## Deploy — GitHub Pages
 
 Habilitar uma vez, direto no navegador (também funciona pelo celular):
