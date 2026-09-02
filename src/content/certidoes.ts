@@ -71,11 +71,11 @@ export const certidoes: Certidao[] = [
 ];
 
 /**
- * A própria SECULT-MA mantém uma página com os links de emissão que ela
+ * A própria SECMA mantém uma página com os links de emissão que ela
  * exige nos editais — útil como referência cruzada sempre que um link aqui
  * mudar de endereço.
  */
 export const guiaOficialSecultMA = {
-  nome: "SECULT-MA — Links para emissão de certidões",
+  nome: "SECMA — Links para emissão de certidões",
   url: "https://www.cultura.ma.gov.br/programas-ou-campanhas/links-para-emissao-de-certidoes",
 };
