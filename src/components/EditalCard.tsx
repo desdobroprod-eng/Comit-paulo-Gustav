@@ -5,7 +5,7 @@ import { TrackedLink } from "./TrackedLink";
 
 export function EditalCard({ edital }: { edital: Edital }) {
   return (
-    <article className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-6 shadow-sm">
+    <article className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="font-mono text-xs uppercase tracking-wide text-ink-faint">
           {esferaLabel[edital.esfera]}
@@ -42,7 +42,7 @@ export function EditalCard({ edital }: { edital: Edital }) {
         href={edital.linkOficial}
         eventName="clique_edital"
         eventParams={{ edital_id: edital.id, esfera: edital.esfera }}
-        className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-lg bg-amber px-4 py-2 font-display text-sm font-semibold text-ink hover:brightness-95"
+        className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-lg bg-fixed-amber px-4 py-2 font-display text-sm font-semibold text-fixed-ink transition hover:-translate-y-0.5 hover:shadow-md"
       >
         Ver edital completo ↗
       </TrackedLink>

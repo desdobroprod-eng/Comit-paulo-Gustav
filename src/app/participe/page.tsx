@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { PageHero } from "@/components/PageHero";
 import { TrackedLink } from "@/components/TrackedLink";
 import { site } from "@/lib/site";
 
@@ -11,21 +12,19 @@ export const metadata: Metadata = {
 
 export default function ParticipePage() {
   return (
-    <Container className="flex flex-col gap-8 py-14">
-      <div className="flex flex-col gap-3">
-        <h1 className="text-3xl font-semibold text-ink">Participe</h1>
-        <p className="max-w-2xl text-ink-soft">
-          Os grupos têm regras de convivência, pra manter o espaço seguro pra todo mundo. Antes
-          de postar, leia as regras fixadas no grupo.
-        </p>
-      </div>
-
+    <>
+      <PageHero
+        eyebrow="Junte-se"
+        title="Participe"
+        description="Os grupos têm regras de convivência, pra manter o espaço seguro pra todo mundo. Antes de postar, leia as regras fixadas no grupo."
+      />
+      <Container className="flex flex-col gap-8 py-14">
       <div className="grid gap-4 sm:grid-cols-2">
         <TrackedLink
           href="/r/grupo-whatsapp-1"
           eventName="clique_grupo_whatsapp"
           eventParams={{ grupo: "1" }}
-          className="rounded-2xl border border-border bg-surface p-6 hover:border-amber-deep"
+          className="rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-1 hover:border-amber-deep hover:shadow-md"
         >
           <p className="font-display text-lg font-semibold text-ink">Grupo de WhatsApp 1</p>
           <p className="mt-2 text-sm text-ink-soft">Entrar no grupo geral do Comitê →</p>
@@ -34,7 +33,7 @@ export default function ParticipePage() {
           href="/r/grupo-whatsapp-2"
           eventName="clique_grupo_whatsapp"
           eventParams={{ grupo: "2" }}
-          className="rounded-2xl border border-border bg-surface p-6 hover:border-amber-deep"
+          className="rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-1 hover:border-amber-deep hover:shadow-md"
         >
           <p className="font-display text-lg font-semibold text-ink">Grupo de WhatsApp 2</p>
           <p className="mt-2 text-sm text-ink-soft">Entrar no grupo geral do Comitê →</p>
@@ -43,7 +42,7 @@ export default function ParticipePage() {
 
       <Link
         href="/radar-cultural"
-        className="rounded-2xl border border-amber-deep bg-surface-alt p-6 hover:brightness-95"
+        className="rounded-2xl border border-amber-deep bg-surface-alt p-6 transition hover:-translate-y-1 hover:shadow-md"
       >
         <p className="font-display text-lg font-semibold text-ink">Entre no Radar Cultural MA</p>
         <p className="mt-2 text-sm text-ink-soft">
@@ -86,6 +85,7 @@ export default function ParticipePage() {
           </li>
         </ul>
       </div>
-    </Container>
+      </Container>
+    </>
   );
 }

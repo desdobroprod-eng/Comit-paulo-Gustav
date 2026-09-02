@@ -1,11 +1,21 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
-import { site } from "@/lib/site";
+import { MosaicLayer } from "./MosaicLayer";
+import { basePath, site } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-border bg-surface-alt">
-      <Container className="flex flex-col gap-3 py-8 text-sm text-ink-soft">
+    <footer className="relative mt-16 overflow-hidden border-t border-border bg-surface-alt">
+      <MosaicLayer />
+      <Container className="relative flex flex-col gap-4 py-10 text-sm text-ink-soft">
+        <Image
+          src={`${basePath}/logo.png`}
+          alt="Logotipo — Lei Paulo Gustavo"
+          width={140}
+          height={53}
+          className="h-9 w-auto rounded-md"
+        />
         <p className="font-medium text-ink">{site.nomeOficial}</p>
         <p>{site.tagline}</p>
         <div className="flex flex-wrap gap-4 pt-2">

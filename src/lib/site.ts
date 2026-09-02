@@ -30,6 +30,11 @@ export const site = {
 
 export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
+// Prefixo de path do GitHub Pages (ver next.config.ts). next/image não
+// prefixa sozinho o src de imagem não otimizada no export estático — use
+// isto ao montar src="" de assets em public/ fora do componente Image.
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export type Esfera = "federal" | "estadual" | "municipal";
 
 export const esferaLabel: Record<Esfera, string> = {

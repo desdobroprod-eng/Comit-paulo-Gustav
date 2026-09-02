@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
   basePath,
   trailingSlash: true,
   images: { unoptimized: true },
+  // next/image não prefixa sozinho o src de <img> não otimizado com o
+  // basePath no export estático — expõe pra código de app conseguir montar
+  // o caminho certo à mão (ver src/lib/site.ts basePath).
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
 
 export default nextConfig;
