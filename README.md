@@ -1,5 +1,7 @@
 # Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo
 
+![Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo](docs/readme-banner.jpg)
+
 Site institucional do Comitê, com editais abertos (Estado do Maranhão e São Luís) e links
 oficiais para emissão de certidão negativa.
 
