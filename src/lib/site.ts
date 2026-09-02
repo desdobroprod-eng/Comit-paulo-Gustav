@@ -8,7 +8,9 @@ export const site = {
   tagline: "Juntos para a cultura resistir",
   descricao:
     "Comitê de sociedade civil que articula fazedores e fazedoras de cultura do Maranhão e cobra do poder público a execução da Lei Paulo Gustavo.",
-  url: "https://comitepaulogustavo.ma",
+  // URL onde o site de fato responde agora (GitHub Pages). Trocar aqui — e só
+  // aqui — quando um domínio próprio for apontado (ver README "Domínio próprio").
+  url: "https://desdobroprod-eng.github.io/Comit-paulo-Gustav",
   redes: {
     instagramMA: "https://instagram.com/comitepaulogustavoma",
     instagramNacional: "http://bit.ly/PLPGInstagram",

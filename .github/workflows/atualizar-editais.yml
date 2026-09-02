@@ -1,0 +1,33 @@
+name: Robô semanal de editais
+
+on:
+  schedule:
+    # Toda segunda-feira, 09:00 em Brasília (UTC-3) = 12:00 UTC.
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run atualizar-editais
+      - name: Comitar se houver novidade
+        run: |
+          if git diff --quiet -- src/content/editais-auto.json; then
+            echo "Sem edital novo — nada a comitar."
+            exit 0
+          fi
+          git config user.name "robo-editais"
+          git config user.email "actions@github.com"
+          git add src/content/editais-auto.json
+          git commit -m "chore(editais): atualização automática semanal ($(date -u +%Y-%m-%d))"
+          git push

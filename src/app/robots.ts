@@ -4,12 +4,14 @@ import { site } from "@/lib/site";
 /**
  * Libera explicitamente os crawlers de IA (GEO) além do rastreamento padrão —
  * queremos que ChatGPT, Perplexity, Claude e afins consigam citar editais e
- * certidões corretamente. /api fica de fora por não ser conteúdo público.
+ * certidões corretamente.
  */
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: "/api/" },
+      { userAgent: "*", allow: "/" },
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
       { userAgent: "OAI-SearchBot", allow: "/" },
