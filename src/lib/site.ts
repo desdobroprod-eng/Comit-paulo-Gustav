@@ -1,11 +1,12 @@
 export const site = {
-  // Forma curta usada no dia a dia (header, títulos). O nome "Comitê Paulo Gustavo
-  // Maranhão" foi rejeitado pelo Comitê — não é o nome oficial nem o apelido usado por
-  // eles. "Comitê Maranhão" é a abertura literal do nome oficial abaixo.
-  nomeCurto: "Comitê Maranhão",
+  // NÃO abreviar. O Comitê já rejeitou duas vezes formas curtas inventadas
+  // ("Comitê Paulo Gustavo Maranhão", depois "Comitê Maranhão") — o nome É
+  // o nome oficial abaixo, por extenso, em qualquer lugar do site.
+  nomeCurto: "Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo",
   nomeOficial:
     "Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo",
-  tagline: "Juntos para a cultura resistir",
+  // Linguagem neutra, a pedido do Comitê.
+  tagline: "Juntes para a cultura resistir",
   descricao:
     "Comitê de sociedade civil que articula fazedores e fazedoras de cultura do Maranhão e cobra do poder público a execução da Lei Paulo Gustavo.",
   // URL onde o site de fato responde agora (GitHub Pages). Trocar aqui — e só

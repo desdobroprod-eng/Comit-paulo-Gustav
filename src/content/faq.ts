@@ -10,7 +10,8 @@ export interface FaqItem {
  */
 export const faq: FaqItem[] = [
   {
-    pergunta: "O que é o Comitê Maranhão do Movimento Paulo Gustavo?",
+    pergunta:
+      "O que é o Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo?",
     resposta:
       "É o Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo, um grupo de sociedade civil formado por fazedores e fazedoras de cultura do Maranhão. Ele não é órgão público: acompanha, articula e cobra do poder público estadual e municipal a execução da Lei Paulo Gustavo no Estado.",
   },
@@ -27,10 +28,10 @@ export const faq: FaqItem[] = [
   {
     pergunta: "O que é o Radar Cultural MA?",
     resposta:
-      "É o cadastro de fazedores e fazedoras de cultura do Comitê Maranhão. Quem se cadastra passa a ser indicado a produtores e curadores e recebe aviso de edital da sua linguagem artística e do seu município — o cadastro fica em comitepaulogustavo.ma/radar-cultural.",
+      "É o cadastro de fazedores e fazedoras de cultura do Comitê. Quem se cadastra passa a ser indicado a produtores e curadores e recebe aviso de edital da sua linguagem artística e do seu município — o cadastro fica em comitepaulogustavo.ma/radar-cultural.",
   },
   {
-    pergunta: "Como participar do Comitê Maranhão do Movimento Paulo Gustavo?",
+    pergunta: "Como participar do Comitê?",
     resposta:
       "É só entrar em um dos grupos de WhatsApp ou seguir o Instagram do Comitê, listados em comitepaulogustavo.ma/participe. Não precisa ser filiado a entidade nenhuma — o Comitê é aberto a qualquer fazedor ou fazedora de cultura do Maranhão.",
   },

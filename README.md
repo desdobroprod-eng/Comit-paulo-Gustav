@@ -1,8 +1,7 @@
-# Comitê Maranhão — site institucional
+# Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo
 
-Site do **Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura
-Paulo Gustavo**, com editais abertos (Estado do Maranhão e São Luís) e links oficiais para
-emissão de certidão negativa.
+Site institucional do Comitê, com editais abertos (Estado do Maranhão e São Luís) e links
+oficiais para emissão de certidão negativa.
 
 ## Rodar localmente
 

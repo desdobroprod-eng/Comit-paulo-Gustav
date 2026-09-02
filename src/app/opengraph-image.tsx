@@ -21,9 +21,9 @@ export default function OpengraphImage() {
       >
         <div
           style={{
-            fontSize: 28,
-            letterSpacing: 2,
-            textTransform: "uppercase",
+            fontSize: 22,
+            lineHeight: 1.3,
+            maxWidth: 780,
             color: "#A8620A",
             fontWeight: 600,
           }}

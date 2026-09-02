@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Radar Cultural MA",
   description:
-    "Cadastre-se no Radar Cultural do Comitê Maranhão: apareça pra produtores e curadores e receba aviso quando abrir edital da sua área.",
+    "Cadastre-se no Radar Cultural: apareça pra produtores e curadores e receba aviso quando abrir edital da sua área.",
 };
 
 // Google Forms do Radar Cultural. NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL (nas
@@ -66,7 +66,7 @@ export default function RadarCulturalPage() {
       </div>
 
       <p className="max-w-2xl text-xs text-ink-faint">
-        Seus dados ficam só com o Comitê Maranhão e servem só pro que está descrito acima: te
+        Seus dados ficam só com o Comitê e servem só pro que está descrito acima: te
         indicar pra oportunidades e te avisar de edital. Quer que a gente apague? É só chamar o
         Comitê no{" "}
         <a href="/participe" className="underline">

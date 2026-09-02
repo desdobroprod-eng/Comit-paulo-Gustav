@@ -10,7 +10,7 @@ export function Footer() {
         <p>{site.tagline}</p>
         <div className="flex flex-wrap gap-4 pt-2">
           <a href={site.redes.instagramMA} className="hover:text-ink">
-            Instagram — Comitê MA
+            Instagram do Comitê
           </a>
           <a href={site.redes.instagramNacional} className="hover:text-ink">
             Instagram — Movimento nacional

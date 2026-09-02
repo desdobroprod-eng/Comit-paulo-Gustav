@@ -1,6 +1,10 @@
-# Comitê Maranhão — site institucional
+# Comitê Maranhão do Movimento Nacional de Trabalhadoras e Trabalhadores da Cultura Paulo Gustavo
 
 Next.js (App Router) + TypeScript + Tailwind v4. Ver README.md para detalhes de conteúdo e stack.
+
+Nome do Comitê: NÃO abreviar (nem "Comitê Maranhão", nem "Comitê Paulo Gustavo Maranhão") —
+usar sempre o nome completo do título acima, em qualquer texto do site/README/copy. Isso já foi
+corrigido duas vezes a pedido explícito do Comitê.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Participe",
-  description: "Redes oficiais e grupos de WhatsApp do Comitê Maranhão do Movimento Paulo Gustavo.",
+  description: "Redes oficiais e grupos de WhatsApp do Comitê.",
 };
 
 export default function ParticipePage() {
@@ -61,7 +61,7 @@ export default function ParticipePage() {
               eventParams={{ rede: "instagram_ma" }}
               className="font-medium text-turquoise hover:underline"
             >
-              Instagram — Comitê Maranhão ↗
+              Instagram do Comitê ↗
             </TrackedLink>
           </li>
           <li>

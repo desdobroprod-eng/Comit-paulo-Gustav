@@ -14,7 +14,10 @@ export function Header() {
   return (
     <header className="border-b border-border bg-surface">
       <Container className="flex flex-wrap items-center justify-between gap-4 py-4">
-        <Link href="/" className="font-display text-lg font-semibold text-ink">
+        <Link
+          href="/"
+          className="max-w-xs font-display text-sm font-semibold leading-snug text-ink sm:max-w-sm sm:text-base"
+        >
           {site.nomeCurto}
         </Link>
         <nav className="flex flex-wrap items-center gap-1">
