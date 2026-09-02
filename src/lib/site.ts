@@ -11,7 +11,18 @@ export const site = {
     instagramNacional: "http://bit.ly/PLPGInstagram",
     minc: "https://www.gov.br/cultura/pt-br/assuntos/lei-paulo-gustavo",
   },
+  /**
+   * Créditos de autoria do site (não do Comitê). URL fica vazia até o time
+   * confirmar o link oficial — ver README "Créditos de autoria" antes de publicar.
+   */
+  idealizadores: {
+    pessoa: "Ben-hur Real Figueiro",
+    agencia: "10Dobro Prod",
+    url: "",
+  },
 } as const;
+
+export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export type Esfera = "federal" | "estadual" | "municipal";
 

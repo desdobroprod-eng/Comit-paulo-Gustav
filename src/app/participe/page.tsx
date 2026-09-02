@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/Container";
+import { TrackedLink } from "@/components/TrackedLink";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,46 +20,69 @@ export default function ParticipePage() {
         </p>
       </div>
 
-      {/*
-        /r/[slug] é um endpoint de redirect (302 para o WhatsApp), não uma página —
-        precisa de navegação completa, por isso usa <a> em vez de <Link>.
-      */}
       <div className="grid gap-4 sm:grid-cols-2">
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a
+        <TrackedLink
           href="/r/grupo-whatsapp-1"
+          eventName="clique_grupo_whatsapp"
+          eventParams={{ grupo: "1" }}
           className="rounded-2xl border border-border bg-surface p-6 hover:border-amber-deep"
         >
           <p className="font-display text-lg font-semibold text-ink">Grupo de WhatsApp 1</p>
           <p className="mt-2 text-sm text-ink-soft">Entrar no grupo geral do Comitê →</p>
-        </a>
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a
+        </TrackedLink>
+        <TrackedLink
           href="/r/grupo-whatsapp-2"
+          eventName="clique_grupo_whatsapp"
+          eventParams={{ grupo: "2" }}
           className="rounded-2xl border border-border bg-surface p-6 hover:border-amber-deep"
         >
           <p className="font-display text-lg font-semibold text-ink">Grupo de WhatsApp 2</p>
           <p className="mt-2 text-sm text-ink-soft">Entrar no grupo geral do Comitê →</p>
-        </a>
+        </TrackedLink>
       </div>
+
+      <Link
+        href="/radar-cultural"
+        className="rounded-2xl border border-amber-deep bg-surface-alt p-6 hover:brightness-95"
+      >
+        <p className="font-display text-lg font-semibold text-ink">Entre no Radar Cultural MA</p>
+        <p className="mt-2 text-sm text-ink-soft">
+          Apareça para produtores e curadores e receba aviso quando abrir edital da sua área →
+        </p>
+      </Link>
 
       <div className="rounded-2xl border border-border bg-surface-alt p-6">
         <h2 className="font-display text-lg font-semibold text-ink">Redes oficiais</h2>
         <ul className="mt-3 flex flex-col gap-2 text-sm">
           <li>
-            <a href={site.redes.instagramMA} className="font-medium text-turquoise hover:underline">
+            <TrackedLink
+              href={site.redes.instagramMA}
+              eventName="clique_rede_social"
+              eventParams={{ rede: "instagram_ma" }}
+              className="font-medium text-turquoise hover:underline"
+            >
               Instagram — Comitê Maranhão ↗
-            </a>
+            </TrackedLink>
           </li>
           <li>
-            <a href={site.redes.instagramNacional} className="font-medium text-turquoise hover:underline">
+            <TrackedLink
+              href={site.redes.instagramNacional}
+              eventName="clique_rede_social"
+              eventParams={{ rede: "instagram_nacional" }}
+              className="font-medium text-turquoise hover:underline"
+            >
               Instagram — Movimento nacional ↗
-            </a>
+            </TrackedLink>
           </li>
           <li>
-            <a href={site.redes.minc} className="font-medium text-turquoise hover:underline">
+            <TrackedLink
+              href={site.redes.minc}
+              eventName="clique_rede_social"
+              eventParams={{ rede: "minc" }}
+              className="font-medium text-turquoise hover:underline"
+            >
               Lei Paulo Gustavo no gov.br ↗
-            </a>
+            </TrackedLink>
           </li>
         </ul>
       </div>

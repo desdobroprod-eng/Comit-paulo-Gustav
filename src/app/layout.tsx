@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fredoka, Work_Sans, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -36,25 +37,50 @@ export const metadata: Metadata = {
     "editais São Luís",
     "certidão negativa cultura",
     "SECULT MA",
+    "radar cultural Maranhão",
   ],
+  authors: [{ name: site.idealizadores.pessoa }, { name: site.idealizadores.agencia }],
+  creator: `${site.idealizadores.pessoa} / ${site.idealizadores.agencia}`,
+  publisher: site.nomeCurto,
+  alternates: { canonical: "/" },
   openGraph: {
     title: site.nomeCurto,
     description: site.descricao,
     locale: "pt_BR",
     type: "website",
+    siteName: site.nomeCurto,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.nomeCurto,
+    description: site.descricao,
   },
   robots: { index: true, follow: true },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: site.nomeOficial,
-  alternateName: site.nomeCurto,
-  slogan: site.tagline,
-  url: site.url,
-  sameAs: [site.redes.instagramMA, site.redes.instagramNacional],
-};
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.nomeOficial,
+    alternateName: site.nomeCurto,
+    slogan: site.tagline,
+    url: site.url,
+    sameAs: [site.redes.instagramMA, site.redes.instagramNacional],
+    description: site.descricao,
+    creator: [
+      { "@type": "Person", name: site.idealizadores.pessoa },
+      { "@type": "Organization", name: site.idealizadores.agencia, url: site.idealizadores.url || undefined },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.nomeCurto,
+    url: site.url,
+    inLanguage: "pt-BR",
+  },
+];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -64,6 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <GoogleAnalytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

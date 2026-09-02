@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { EditalCard } from "@/components/EditalCard";
+import { Faq } from "@/components/Faq";
 import { editais } from "@/content/editais";
 import { site } from "@/lib/site";
 
@@ -76,6 +77,28 @@ export default function Home() {
           </div>
         </Container>
       </section>
+
+      <section className="py-14">
+        <Container className="flex flex-col items-start gap-4 rounded-2xl border border-amber-deep bg-surface-alt p-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="font-display text-xl font-semibold text-ink">
+              Entre no Radar Cultural MA
+            </h2>
+            <p className="mt-1 max-w-xl text-sm text-ink-soft">
+              Apareça para produtores e curadores e receba aviso de edital da sua área e da sua
+              cidade.
+            </p>
+          </div>
+          <Link
+            href="/radar-cultural"
+            className="shrink-0 rounded-lg bg-amber px-5 py-3 font-display text-sm font-semibold text-ink hover:brightness-95"
+          >
+            Cadastrar meu perfil
+          </Link>
+        </Container>
+      </section>
+
+      <Faq />
     </>
   );
 }

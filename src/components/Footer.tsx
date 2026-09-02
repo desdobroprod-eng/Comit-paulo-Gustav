@@ -21,7 +21,22 @@ export function Footer() {
           <Link href="/participe" className="hover:text-ink">
             Participe
           </Link>
+          <Link href="/radar-cultural" className="hover:text-ink">
+            Radar Cultural
+          </Link>
         </div>
+        <p className="mt-4 border-t border-border pt-4 text-xs text-ink-faint">
+          Site idealizado por {site.idealizadores.pessoa} e {site.idealizadores.agencia}
+          {site.idealizadores.url && (
+            <>
+              {" "}
+              —{" "}
+              <a href={site.idealizadores.url} className="underline hover:text-ink">
+                {site.idealizadores.agencia}
+              </a>
+            </>
+          )}
+        </p>
       </Container>
     </footer>
   );

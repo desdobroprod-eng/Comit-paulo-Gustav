@@ -1,6 +1,7 @@
 import { esferaLabel } from "@/lib/site";
 import type { Edital } from "@/content/editais";
 import { StatusBadge } from "./StatusBadge";
+import { TrackedLink } from "./TrackedLink";
 
 export function EditalCard({ edital }: { edital: Edital }) {
   return (
@@ -26,12 +27,19 @@ export function EditalCard({ edital }: { edital: Edital }) {
           Conteúdo de exemplo — confirme na fonte oficial antes de divulgar.
         </p>
       )}
-      <a
+      {edital.detectadoAutomaticamente && (
+        <p className="rounded-lg bg-surface-alt px-3 py-2 text-xs text-ink-faint">
+          Detectado automaticamente na fonte oficial — confirme prazo e valor antes de divulgar.
+        </p>
+      )}
+      <TrackedLink
         href={edital.linkOficial}
+        eventName="clique_edital"
+        eventParams={{ edital_id: edital.id, esfera: edital.esfera }}
         className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-lg bg-amber px-4 py-2 font-display text-sm font-semibold text-ink hover:brightness-95"
       >
         Ver edital completo ↗
-      </a>
+      </TrackedLink>
     </article>
   );
 }

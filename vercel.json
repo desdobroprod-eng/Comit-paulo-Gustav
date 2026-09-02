@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/atualizar-editais",
+      "schedule": "0 12 * * 1"
+    }
+  ]
+}

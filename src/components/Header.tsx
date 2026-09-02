@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 const links = [
   { href: "/editais", label: "Editais" },
   { href: "/certidoes", label: "Certidões" },
+  { href: "/radar-cultural", label: "Radar Cultural" },
   { href: "/sobre", label: "Sobre o Comitê" },
   { href: "/participe", label: "Participe" },
 ];

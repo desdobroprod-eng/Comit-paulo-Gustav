@@ -1,4 +1,5 @@
 import type { Certidao } from "@/content/certidoes";
+import { TrackedLink } from "./TrackedLink";
 
 const rotuloPara: Record<Certidao["paraQuem"][number], string> = {
   "pessoa-fisica": "Pessoa física",
@@ -20,12 +21,14 @@ export function CertidaoRow({ certidao }: { certidao: Certidao }) {
           ))}
         </div>
       </div>
-      <a
+      <TrackedLink
         href={certidao.link}
+        eventName="clique_certidao"
+        eventParams={{ certidao_id: certidao.id, esfera: certidao.esfera }}
         className="inline-flex h-fit shrink-0 items-center gap-1.5 rounded-lg border border-border bg-surface-alt px-4 py-2 text-sm font-medium text-ink hover:border-amber-deep"
       >
         Emitir certidão ↗
-      </a>
+      </TrackedLink>
     </div>
   );
 }
