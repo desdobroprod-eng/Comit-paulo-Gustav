@@ -8,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function RadarCulturalPage() {
+  const formularioUrl = process.env.NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL;
+
   return (
     <Container className="flex flex-col gap-8 py-14">
       <div className="flex flex-col gap-3">
@@ -47,14 +49,22 @@ export default function RadarCulturalPage() {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-        <iframe
-          src="https://form.jotform.com/262445470043048"
-          title="Formulário Radar Cultural MA"
-          className="h-[1400px] w-full"
-          loading="lazy"
-        />
-      </div>
+      {formularioUrl ? (
+        <div className="overflow-hidden rounded-2xl border border-border bg-surface">
+          <iframe
+            src={formularioUrl}
+            title="Formulário Radar Cultural MA"
+            className="h-[1400px] w-full"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div className="rounded-2xl border border-dashed border-amber-deep bg-surface-alt p-6 text-sm text-ink-soft">
+          Formulário em configuração. Quando o Google Forms do Radar Cultural estiver pronto,
+          defina a URL dele em <code className="font-mono">NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL</code>{" "}
+          nas variáveis de ambiente da Vercel — não precisa alterar código nem redeployar na mão.
+        </div>
+      )}
 
       <p className="max-w-2xl text-xs text-ink-faint">
         Seus dados ficam com o Comitê Maranhão e são usados só para o que está

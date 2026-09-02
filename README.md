@@ -48,30 +48,32 @@ Eventos customizados já disparados: `clique_edital`, `clique_certidao`, `clique
 ## Robô semanal de editais
 
 `src/app/api/cron/atualizar-editais` roda toda segunda-feira (configurado em `vercel.json`),
-busca as páginas oficiais de editais (SECULT-MA e Prefeitura de São Luís), detecta links novos
-que parecem edital/chamamento público e comita automaticamente em
-`src/content/editais-auto.json` via API do GitHub — sem precisar de deploy manual nem de
-intervenção humana. Itens detectados assim aparecem no site com o aviso "detectado
-automaticamente — confirme prazo e valor", porque o robô lê o link e o texto do link, não o
-conteúdo do edital.
+busca os perfis da SECMA e da SECULT-SL na Prosas (`fontesOficiais` em `src/content/editais.ts`
+— a pedido do Comitê, é a fonte principal agora, mais fácil de ler que o site de cada governo),
+detecta links de edital novos e comita automaticamente em `src/content/editais-auto.json` via
+API do GitHub — sem precisar de deploy manual nem de intervenção humana. Itens detectados assim
+aparecem no site com o aviso "detectado automaticamente — confirme prazo e valor", porque o
+robô lê o link e o texto do link, não o conteúdo do edital.
 
 Variáveis necessárias (ver `.env.example`): `CRON_SECRET`, `GITHUB_TOKEN` (fine-grained PAT
 com "Contents: Read and write" só neste repositório), `GITHUB_REPO`, `GITHUB_BRANCH`.
 
-**Importante:** o scraper foi implementado com uma heurística genérica (qualquer link cujo
-texto ou endereço contenha "edital", "chamamento público", "convocatória" ou "premiação"),
-porque o acesso às páginas de cultura.ma.gov.br e saoluis.ma.gov.br não é possível a partir do
-ambiente de desenvolvimento usado para construir isso. Ele deve funcionar assim que publicado
-na Vercel (que tem acesso normal à internet), mas o primeiro disparo precisa ser conferido —
-dispare manualmente uma vez (`GET /api/cron/atualizar-editais` com o header `Authorization:
-Bearer <CRON_SECRET>`) e valide o resultado antes de confiar nele rodando sozinho.
+**Importante:** o scraper reconhece o padrão de URL de edital da própria Prosas
+(`/editais/{id}-slug`) mais um heurístico genérico de texto ("edital", "chamamento público" etc.)
+como reforço. Não foi possível abrir prosas.com.br a partir do ambiente de desenvolvimento
+usado para construir isso (rede bloqueada), então o padrão da Prosas não foi testado contra o
+HTML real. Deve funcionar assim que publicado na Vercel (que tem acesso normal à internet), mas
+o primeiro disparo precisa ser conferido — dispare manualmente uma vez (`GET
+/api/cron/atualizar-editais` com o header `Authorization: Bearer <CRON_SECRET>`) e valide o
+resultado antes de confiar nele rodando sozinho.
 
 ## Radar Cultural MA
 
-`/radar-cultural` é o cadastro de fazedores e fazedoras de cultura, hoje embutido via Jotform
-(formulário `262445470043048`, criado na conta Jotform conectada a esta sessão). Trocar o
-`src="https://form.jotform.com/262445470043048"` em `src/app/radar-cultural/page.tsx` se o
-formulário for recriado ou movido para outra conta.
+`/radar-cultural` é o cadastro de fazedores e fazedoras de cultura. A pedido do Comitê, o
+formulário é feito no Google Forms (não Jotform). A página lê a URL do formulário da variável
+de ambiente `NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL` — assim que o formulário existir, basta
+colar a URL nessa variável em Vercel → Project Settings → Environment Variables, sem tocar em
+código. Até lá, a página mostra um aviso de "formulário em configuração".
 
 ## Créditos de autoria
 

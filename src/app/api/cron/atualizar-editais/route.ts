@@ -22,6 +22,9 @@ const orgaoPorEsfera: Record<Esfera, string> = {
 };
 
 const PADRAO_EDITAL = /edital|chamamento p[uú]blico|convocat[óo]ria|premia[çc][ãa]o/i;
+// Página de edital na Prosas segue sempre /editais/{id}-{slug} — mais preciso
+// que o padrão de texto genérico acima quando a fonte é prosas.com.br.
+const PADRAO_PROSAS = /^\/editais\/\d+-/;
 
 function slugify(texto: string) {
   return texto
@@ -49,9 +52,12 @@ async function coletarDaFonte(url: string, esfera: Esfera): Promise<EditalDetect
     const texto = $(el).text().trim().replace(/\s+/g, " ");
     const href = $(el).attr("href") ?? "";
     if (!texto && !href) return;
-    if (!PADRAO_EDITAL.test(texto) && !PADRAO_EDITAL.test(href)) return;
 
     const linkAbsoluto = new URL(href, url).toString();
+    const bateProsas = PADRAO_PROSAS.test(new URL(linkAbsoluto).pathname);
+    const bateTexto = PADRAO_EDITAL.test(texto) || PADRAO_EDITAL.test(href);
+    if (!bateProsas && !bateTexto) return;
+
     if (vistos.has(linkAbsoluto)) return;
     vistos.add(linkAbsoluto);
 
