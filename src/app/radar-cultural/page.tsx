@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Radar Cultural MA",
   description:
-    "Entre no Radar Cultural do Maranhão: apareça para produtores e curadores e receba aviso quando abrir edital da sua área.",
+    "Cadastre-se no Radar Cultural do Comitê Maranhão: apareça pra produtores e curadores e receba aviso quando abrir edital da sua área.",
 };
 
 export default function RadarCulturalPage() {
@@ -17,12 +17,13 @@ export default function RadarCulturalPage() {
           Radar Cultural MA
         </span>
         <h1 className="text-3xl font-semibold text-ink sm:text-4xl">
-          Apareça no radar de quem produz cultura no Maranhão
+          Entre no radar de quem faz cultura no Maranhão
         </h1>
         <p className="max-w-2xl text-lg text-ink-soft">
-          Cadastre seu perfil e o Comitê passa a te indicar para produtores e curadores, te avisar
-          quando abrir edital da sua área e da sua cidade — e ajuda a mostrar, com dados reais, o
-          tamanho da cena cultural maranhense para quem decide política pública.
+          Cadastre seu perfil e o Comitê passa a te indicar pra produtores e curadores, te avisar
+          quando abrir edital da sua área e da sua cidade, e usar o seu cadastro — junto com o de
+          tanta outra gente — como número na hora de cobrar política pública pra cultura no
+          Estado.
         </p>
       </div>
 
@@ -30,21 +31,21 @@ export default function RadarCulturalPage() {
         <div className="rounded-2xl border border-border bg-surface p-5">
           <p className="font-display font-semibold text-ink">Seja encontrado</p>
           <p className="mt-1 text-sm text-ink-soft">
-            Produtores, curadores e o próprio Comitê consultam o radar antes de indicar nomes.
+            Antes de indicar um nome, produtor, curador e o próprio Comitê consultam o radar.
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-5">
           <p className="font-display font-semibold text-ink">Receba o aviso certo</p>
           <p className="mt-1 text-sm text-ink-soft">
-            Editais da sua linguagem artística e do seu município, sem precisar ficar checando site
-            de prefeitura.
+            Edital da sua linguagem e do seu município, direto pra você — sem ficar recarregando
+            site de prefeitura.
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-5">
           <p className="font-display font-semibold text-ink">Fortaleça a categoria</p>
           <p className="mt-1 text-sm text-ink-soft">
-            Cada perfil ajuda o Comitê a cobrar o poder público com números reais da cena cultural
-            do MA.
+            Quanto mais gente cadastrada, mais peso tem o Comitê na hora de cobrar o poder
+            público com números da cena cultural do MA, não só com discurso.
           </p>
         </div>
       </div>
@@ -67,9 +68,9 @@ export default function RadarCulturalPage() {
       )}
 
       <p className="max-w-2xl text-xs text-ink-faint">
-        Seus dados ficam com o Comitê Maranhão e são usados só para o que está
-        descrito acima: te indicar para oportunidades e te avisar de editais. Você pode pedir a
-        remoção deles quando quiser, falando com o Comitê pelo{" "}
+        Seus dados ficam só com o Comitê Maranhão e servem só pro que está descrito acima: te
+        indicar pra oportunidades e te avisar de edital. Quer que a gente apague? É só chamar o
+        Comitê no{" "}
         <a href="/participe" className="underline">
           WhatsApp ou Instagram
         </a>

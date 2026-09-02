@@ -16,11 +16,11 @@ export default function EditaisPage() {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-ink">Editais abertos</h1>
         <p className="max-w-2xl text-ink-soft">
-          Reunimos aqui os editais de fomento à cultura do Estado do Maranhão e da capital São
-          Luís — da Lei Paulo Gustavo e da Política Nacional Aldir Blanc (PNAB), programa
-          federal irmão, administrado pelas mesmas secretarias. Em breve ampliamos para outros
-          municípios. O botão de cada edital leva direto à publicação oficial — inscreva-se
-          sempre por lá.
+          Aqui estão os editais de fomento à cultura abertos no Estado do Maranhão e na capital
+          São Luís — da Lei Paulo Gustavo e da Política Nacional Aldir Blanc (PNAB), o programa
+          federal irmão, administrado pelas mesmas secretarias. Por enquanto é só SECMA e
+          SECULT-SL; outros municípios entram assim que o Comitê conseguir cobrir. O botão de
+          cada edital leva direto à publicação oficial — a inscrição é sempre por lá, nunca aqui.
         </p>
       </div>
 
@@ -32,11 +32,11 @@ export default function EditaisPage() {
 
       <div className="rounded-2xl border border-border bg-surface-alt p-6">
         <h2 className="font-display text-lg font-semibold text-ink">
-          Fontes oficiais para conferir a todo momento
+          Fonte oficial, pra conferir sempre que bater dúvida
         </h2>
         <p className="mt-2 text-sm text-ink-soft">
-          Editais abrem e encerram fora do nosso controle. Sempre que precisar confirmar prazo,
-          valor ou regulamento, use a fonte oficial de cada esfera:
+          Edital abre e fecha sem avisar o Comitê. Antes de se inscrever, confirme prazo, valor e
+          regulamento direto na fonte de cada esfera:
         </p>
         <ul className="mt-4 flex flex-col gap-2">
           {Object.entries(fontesOficiais).map(([esfera, fonte]) => (

@@ -17,21 +17,21 @@ export const faq: FaqItem[] = [
   {
     pergunta: "Quais editais da Lei Paulo Gustavo estão abertos no Maranhão?",
     resposta:
-      "O Comitê reúne em comitepaulogustavo.ma/editais os editais de fomento à cultura abertos do Estado do Maranhão (SECMA) e do município de São Luís (SECULT-SL) — da Lei Paulo Gustavo e da Política Nacional Aldir Blanc (PNAB), programa federal irmão administrado pelas mesmas secretarias —, com link direto para a publicação oficial de cada um. A lista completa e sempre atualizada também pode ser conferida direto na SECMA e na Prefeitura de São Luís.",
+      "Em comitepaulogustavo.ma/editais o Comitê reúne os editais de fomento à cultura abertos do Estado do Maranhão (SECMA) e do município de São Luís (SECULT-SL) — da Lei Paulo Gustavo e também da Política Nacional Aldir Blanc (PNAB), o programa federal irmão administrado pelas mesmas secretarias —, cada um com link direto pra publicação oficial. Pra lista sempre atualizada na fonte, é só ir direto na SECMA e na Prefeitura de São Luís.",
   },
   {
     pergunta: "Como emitir certidão negativa para participar de edital cultural no Maranhão?",
     resposta:
-      "É preciso, em geral, certidão negativa federal (Receita Federal/PGFN), estadual (SEFAZ-MA) e, para quem mora em São Luís, municipal (SEMFAZ). Pessoa jurídica também costuma precisar de Certificado de Regularidade do FGTS e Certidão Negativa de Débitos Trabalhistas. O Comitê reúne os links oficiais de emissão de cada uma em comitepaulogustavo.ma/certidoes.",
+      "Em geral você vai precisar de certidão negativa federal (Receita Federal/PGFN), estadual (SEFAZ-MA) e, pra quem é de São Luís, municipal (SEMFAZ). Se tiver empresa, some a isso o Certificado de Regularidade do FGTS e a Certidão Negativa de Débitos Trabalhistas. O Comitê reúne o link oficial de emissão de cada uma em comitepaulogustavo.ma/certidoes.",
   },
   {
     pergunta: "O que é o Radar Cultural MA?",
     resposta:
-      "É o cadastro de fazedores e fazedoras de cultura do Comitê Maranhão. Quem entra no Radar Cultural passa a ser indicado a produtores e curadores e recebe aviso de editais da sua linguagem artística e do seu município, em comitepaulogustavo.ma/radar-cultural.",
+      "É o cadastro de fazedores e fazedoras de cultura do Comitê Maranhão. Quem se cadastra passa a ser indicado a produtores e curadores e recebe aviso de edital da sua linguagem artística e do seu município — o cadastro fica em comitepaulogustavo.ma/radar-cultural.",
   },
   {
     pergunta: "Como participar do Comitê Maranhão do Movimento Paulo Gustavo?",
     resposta:
-      "Basta entrar em um dos grupos de WhatsApp ou seguir o Instagram do Comitê, listados em comitepaulogustavo.ma/participe. Não é preciso ser filiado a nenhuma entidade — o Comitê é aberto a fazedores e fazedoras de cultura do Maranhão.",
+      "É só entrar em um dos grupos de WhatsApp ou seguir o Instagram do Comitê, listados em comitepaulogustavo.ma/participe. Não precisa ser filiado a entidade nenhuma — o Comitê é aberto a qualquer fazedor ou fazedora de cultura do Maranhão.",
   },
 ];

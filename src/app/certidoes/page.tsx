@@ -18,10 +18,10 @@ export default function CertidoesPage() {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-ink">Certidões negativas</h1>
         <p className="max-w-2xl text-ink-soft">
-          A maioria dos editais da Lei Paulo Gustavo pede comprovação de regularidade fiscal e
-          trabalhista, para pessoa física e, se for o caso, para sua empresa (pessoa jurídica).
-          Reunimos os links oficiais de emissão por esfera, para você não precisar procurar cada
-          um separadamente.
+          Quase todo edital da Lei Paulo Gustavo pede certidão de regularidade fiscal e
+          trabalhista — pra pessoa física e, se você tiver empresa, também pra pessoa jurídica.
+          Abaixo estão os links oficiais de emissão, separados por esfera, pra você não perder
+          tempo caçando um por um.
         </p>
       </div>
 
@@ -44,8 +44,8 @@ export default function CertidoesPage() {
 
       <div className="rounded-2xl border border-border bg-surface-alt p-6">
         <p className="text-sm text-ink-soft">
-          Se algum link acima estiver fora do ar ou tiver mudado de endereço, a própria SECULT-MA
-          mantém uma página com os links que ela exige nos editais — use como referência cruzada:
+          Link fora do ar ou mudou de endereço? A própria SECULT-MA mantém uma página com os
+          links que ela cobra nos editais — vale como segunda fonte:
         </p>
         <a
           href={guiaOficialSecultMA.url}

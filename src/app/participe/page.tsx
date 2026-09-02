@@ -15,8 +15,8 @@ export default function ParticipePage() {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-ink">Participe</h1>
         <p className="max-w-2xl text-ink-soft">
-          Por questões de privacidade e segurança dos grupos, seguimos algumas regras de
-          participação. Ao entrar, leia as regras fixadas no grupo antes de postar.
+          Os grupos têm regras de convivência, pra manter o espaço seguro pra todo mundo. Antes
+          de postar, leia as regras fixadas no grupo.
         </p>
       </div>
 
@@ -47,7 +47,7 @@ export default function ParticipePage() {
       >
         <p className="font-display text-lg font-semibold text-ink">Entre no Radar Cultural MA</p>
         <p className="mt-2 text-sm text-ink-soft">
-          Apareça para produtores e curadores e receba aviso quando abrir edital da sua área →
+          Cadastre seu perfil e receba aviso assim que abrir edital da sua área →
         </p>
       </Link>
 

@@ -57,22 +57,22 @@ export default function Home() {
           <div>
             <h3 className="font-display text-lg font-semibold text-ink">Articulação</h3>
             <p className="mt-2 text-sm text-ink-soft">
-              Reunimos fazedores e fazedoras de cultura do Maranhão para acompanhar de perto a
-              execução da Lei Paulo Gustavo.
+              Juntamos fazedores e fazedoras de cultura de todo o Maranhão pra acompanhar, edital
+              por edital, se a Lei Paulo Gustavo está saindo do papel.
             </p>
           </div>
           <div>
-            <h3 className="font-display text-lg font-semibold text-ink">Cobrança institucional</h3>
+            <h3 className="font-display text-lg font-semibold text-ink">Cobrança ao poder público</h3>
             <p className="mt-2 text-sm text-ink-soft">
-              Solicitamos e cobramos o poder público estadual e municipal por transparência e
-              cumprimento de prazos.
+              Quando SECMA ou SECULT-SL atrasam prazo, resposta ou publicação de edital, é o
+              Comitê que cobra — em ofício, em reunião ou nas redes.
             </p>
           </div>
           <div>
-            <h3 className="font-display text-lg font-semibold text-ink">Acesso facilitado</h3>
+            <h3 className="font-display text-lg font-semibold text-ink">Tudo num lugar só</h3>
             <p className="mt-2 text-sm text-ink-soft">
-              Centralizamos editais abertos e os links oficiais de certidão negativa para agilizar
-              sua inscrição.
+              Edital aberto e link oficial de certidão, num só endereço — pra você não perder prazo
+              correndo atrás de informação espalhada.
             </p>
           </div>
         </Container>
@@ -85,8 +85,8 @@ export default function Home() {
               Entre no Radar Cultural MA
             </h2>
             <p className="mt-1 max-w-xl text-sm text-ink-soft">
-              Apareça para produtores e curadores e receba aviso de edital da sua área e da sua
-              cidade.
+              Produtores e curadores passam a te encontrar, e você recebe aviso assim que abrir
+              edital da sua linguagem e da sua cidade.
             </p>
           </div>
           <Link

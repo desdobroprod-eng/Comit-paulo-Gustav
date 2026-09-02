@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Worktrees de agentes (Claude Code) podem existir em qualquer profundidade
+    // e trazem seu próprio node_modules/.next — sem "**/" na frente, os padrões
+    // acima só cobrem a raiz do projeto.
+    "**/.claude/**",
+    "**/node_modules/**",
   ]),
 ]);
 
