@@ -18,6 +18,7 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 - Next.js (App Router) + TypeScript, export estático (`output: "export"` em `next.config.ts`)
 - Tailwind CSS v4 — tokens de marca em `src/app/globals.css`
+- Tipografia: Fraunces (títulos) + Inter (corpo), via `next/font`
 - Deploy: **GitHub Pages**, via GitHub Actions (`.github/workflows/deploy.yml`)
 
 ## SDD — Documento de Design do Sistema
@@ -71,6 +72,9 @@ flowchart LR
 | Analytics (`GoogleAnalytics.tsx`, `TrackedLink.tsx`) | client-side | GA4, condicional a `NEXT_PUBLIC_GA_MEASUREMENT_ID` existir |
 | Radar Cultural | iframe pra fora | Google Forms hospeda o formulário e as respostas — o site não guarda dado nenhum |
 | `/r/[slug]` | build estático | página por link de convite (WhatsApp), redirect via JS |
+| `Modal.tsx` | client-side | janela em `<dialog>` nativo — passo a passo da certidão e menu do celular |
+| `Reveal.tsx` | client-side | entrada no scroll, com a base sempre visível (sem JS o conteúdo aparece igual) |
+| `Figura.tsx` / `cultura.ts` | build estático | acervo Creative Commons com o crédito que a licença exige |
 
 ### Decisões e por quê
 
@@ -140,10 +144,37 @@ hospedar quando chegar a hora.
 Rascunho publicado como referência de paleta, tipografia e uso do logotipo — aplicado nos
 tokens de `globals.css`.
 
+## Acervo de imagem e crédito obrigatório
+
+As fotos e o vídeo em `public/cultura/` são de terceiros, sob licença Creative Commons
+(CC BY 4.0, CC BY-SA 4.0/2.0 e CC BY 3.0). Autoria e licença de cada arquivo estão em
+`public/cultura/CREDITOS.json`, aparecem na legenda de cada foto e na página `/creditos`.
+
+**Ao trocar ou acrescentar imagem, o crédito vai junto** — sem ele o uso deixa de ser
+autorizado pela licença. Cadastre o arquivo no `CREDITOS.json` e em `src/content/cultura.ts`
+antes de usá-lo em qualquer página.
+
+## Certidões — por que uma janela e não um link direto
+
+O botão "Como emitir" abre uma janela dentro do próprio site, com o que ter em mãos, o passo a
+passo e a validade, e só de dentro dela o portal do órgão abre em outra aba. É decisão do
+Comitê (retenção): ninguém sai do site sem saber o que vai encontrar do lado de lá. Embutir o
+portal em iframe não é opção — os sites de governo mandam `X-Frame-Options`/CSP e recusam.
+
+O passo a passo mora em `src/content/certidoes.ts` (`precisaDe`, `passos`, `validade`).
+Prazo de validade só é afirmado onde é fixado em norma; nos demais casos o texto manda conferir
+o que vem impresso na certidão. `certidoesVerificadasEm` registra quando os links foram
+conferidos um por um — atualize junto com a conferência.
+
 ## Analytics (GA4)
 
 Eventos customizados já disparados: `clique_edital`, `clique_certidao`, `clique_grupo_whatsapp`,
-`clique_rede_social` (ver `src/components/TrackedLink.tsx` e `src/lib/analytics.ts`).
+`clique_rede_social`, `clique_fonte_oficial`, `clique_guia_certidoes`,
+`abre_passo_a_passo_certidao` e `copia_link_certidao` (ver `src/components/TrackedLink.tsx`,
+`src/components/CertidaoRow.tsx` e `src/lib/analytics.ts`).
+
+Os dois últimos medem o funil da certidão: quantas pessoas abrem o passo a passo e quantas
+dessas de fato seguem para o portal do órgão (`clique_certidao`).
 
 ## Robô semanal de editais
 
