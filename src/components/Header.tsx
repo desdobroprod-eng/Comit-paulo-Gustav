@@ -26,7 +26,7 @@ export function Header() {
             className="h-9 w-auto rounded-sm sm:h-11"
             priority
           />
-          <span className="hidden max-w-[15rem] font-display text-[13px] font-semibold leading-snug text-tinta sm:block sm:max-w-xs">
+          <span className="hidden max-w-xs font-display text-[13px] font-semibold leading-snug text-tinta xl:block">
             {site.nomeCurto}
           </span>
         </Link>
@@ -37,7 +37,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-sm px-3 py-2 text-sm text-tinta-suave transition hover:bg-superficie-alt hover:text-tinta"
+                className="whitespace-nowrap rounded-sm px-3 py-2 text-sm text-tinta-suave transition hover:bg-superficie-alt hover:text-tinta"
               >
                 {link.label}
               </Link>
