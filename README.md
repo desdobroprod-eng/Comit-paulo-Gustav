@@ -58,7 +58,7 @@ flowchart LR
 
     pages --> site["Site público (comitê + visitante)"]
     site --> ga4["Google Analytics 4"]
-    site -->|iframe| forms["Google Forms — Radar Cultural"]
+    site -->|POST/fetch| apps["Apps Script do Comitê — planilha + Drive"]
 ```
 
 ### Componentes
@@ -70,11 +70,14 @@ flowchart LR
 | `editais-auto.json` | commitado no repo | achados do robô semanal, mesclados com `editais.ts` em runtime de build |
 | `scripts/atualizar-editais.ts` | roda só no Actions | scraper — não faz parte do bundle do site |
 | Analytics (`GoogleAnalytics.tsx`, `TrackedLink.tsx`) | client-side | GA4, condicional a `NEXT_PUBLIC_GA_MEASUREMENT_ID` existir |
-| Radar Cultural | iframe pra fora | Google Forms hospeda o formulário e as respostas — o site não guarda dado nenhum |
+| Radar Cultural | formulário próprio + Apps Script | a planilha e o Drive do Comitê guardam os dados; o site estático não guarda nada |
 | `/r/[slug]` | build estático | página por link de convite (WhatsApp), redirect via JS |
 | `Modal.tsx` | client-side | janela em `<dialog>` nativo — passo a passo da certidão e menu do celular |
 | `Reveal.tsx` | client-side | entrada no scroll, com a base sempre visível (sem JS o conteúdo aparece igual) |
 | `Figura.tsx` / `cultura.ts` | build estático | acervo Creative Commons com o crédito que a licença exige |
+| `MapaRadar.tsx` / `RadarForm.tsx` | client-side | mapa dos fazedores e o cadastro que alimenta ele |
+| `scripts/apps-script/radar.gs` | conta do Google do Comitê | grava na planilha e devolve só as colunas públicas |
+| `scripts/sincronizar-radar.ts` | roda só no Actions | assa perfis e fotos no repositório — fora do bundle |
 
 ### Decisões e por quê
 
@@ -122,8 +125,9 @@ Se um domínio for apontado depois (tipo `comitepaulogustavo.ma`): cria um arqui
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` — código do GA4, formato `G-XXXXXXXXXX`. Pega em
   analytics.google.com → Admin → Fluxos de dados → toca no fluxo Web (não confundir com o
   "Property ID", que é só número). Sem essa variável o site funciona normal, só sem analytics.
-- `NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL` — URL do Google Forms do Radar Cultural (ver seção
-  abaixo). Sem ela, a página mostra um aviso de "formulário em configuração".
+- `NEXT_PUBLIC_RADAR_ENDPOINT` — URL do Apps Script do Radar Cultural (ver seção abaixo). Sem
+  ela, o formulário aparece mas o envio oferece o Google Forms antigo como alternativa, e o mapa
+  mostra só o que estiver assado no repositório.
 
 Ver `.env.example` pros mesmos valores em desenvolvimento local.
 
@@ -170,8 +174,10 @@ conferidos um por um — atualize junto com a conferência.
 
 Eventos customizados já disparados: `clique_edital`, `clique_certidao`, `clique_grupo_whatsapp`,
 `clique_rede_social`, `clique_fonte_oficial`, `clique_guia_certidoes`,
-`abre_passo_a_passo_certidao` e `copia_link_certidao` (ver `src/components/TrackedLink.tsx`,
-`src/components/CertidaoRow.tsx` e `src/lib/analytics.ts`).
+`abre_passo_a_passo_certidao`, `copia_link_certidao`, `cadastro_radar`,
+`clique_whatsapp_radar`, `clique_instagram_radar` e `clique_site_radar` (ver
+`src/components/TrackedLink.tsx`, `src/components/CertidaoRow.tsx`,
+`src/components/MapaRadar.tsx` e `src/lib/analytics.ts`).
 
 Os dois últimos medem o funil da certidão: quantas pessoas abrem o passo a passo e quantas
 dessas de fato seguem para o portal do órgão (`clique_certidao`).
@@ -197,16 +203,65 @@ outro serviço), mas o primeiro disparo precisa ser conferido — vai em **Actio
 de editais → Run workflow** pra rodar na mão uma vez e olhar o log antes de confiar nele
 rodando sozinho.
 
-## Radar Cultural MA
+## Radar Cultural MA — mapa e cadastro
 
-`/radar-cultural` é o cadastro de fazedores e fazedoras de cultura, feito no Google Forms (não
-Jotform, a pedido do Comitê). A URL atual está fixa em `FORMULARIO_PADRAO`, em
-`src/app/radar-cultural/page.tsx`. Pra trocar sem editar código, defina a Variable
-`NEXT_PUBLIC_RADAR_CULTURAL_FORM_URL` (ver acima) — ela sobrescreve o padrão.
+`/radar-cultural` tem duas coisas: o **mapa** de quem faz cultura no Maranhão (um pino com a
+foto de cada perfil; clicou, abre os detalhes com `wa.me` e redes) e o **cadastro**, um
+formulário próprio do site — o Google Forms saiu.
 
-O conteúdo do formulário (perguntas, ordem, obrigatoriedade) precisa ser editado direto no
-Google Forms — nenhuma ferramenta conectada aqui tem acesso à API do Google Forms, só
-Drive/Gmail/Calendar. A lista de campos sugerida está no histórico da conversa com o Comitê.
+### Como os dados andam
+
+```
+Formulário no site ──POST──► Apps Script ──► planilha (todas as colunas)
+                                        └──► Drive (foto do perfil)
+
+Mapa ──fetch ao abrir a página──► Apps Script ──► só as colunas públicas de quem tem Publicar = SIM
+Robô diário ──lê o mesmo endpoint──► src/content/radar-auto.json + public/radar/*.jpg (comitados)
+```
+
+O `fetch` em runtime é o que faz o pino aparecer na hora, sem rebuild — decisão do Comitê. O robô
+diário (`.github/workflows/sincronizar-radar.yml` + `scripts/sincronizar-radar.ts`) assa os
+mesmos perfis no repositório por três motivos: o mapa pinta na primeira renderização sem esperar
+o Google, continua de pé se o Apps Script cair ou estourar cota, e o conteúdo entra no HTML pra
+buscador e busca por IA acharem. Se o `fetch` falhar, falha calado e fica o que veio assado.
+
+### Colunas públicas e privadas
+
+Vão pro site: nome, tipo, linguagens, município, bairro, apresentação, foto, WhatsApp, Instagram,
+site, ano e as coordenadas. **Ficam só na planilha:** e-mail e qualquer coisa que se acrescente
+como privada. O `doGet` do Apps Script devolve campo por campo, de propósito — quem for
+acrescentar coluna nova precisa decidir de que lado ela fica. Não há coleta de CPF nem de CNPJ.
+
+Publicação é imediata, sem fila de aprovação (decisão do Comitê). As travas são o consentimento
+obrigatório no envio e a coluna **`Publicar`**, que nasce `SIM`: virou `NÃO`, o pino sai do ar na
+próxima leitura, e o robô apaga a foto do repositório junto.
+
+### Instalar o endpoint (uma vez, dá pelo celular)
+
+1. Abra a planilha que vai guardar os cadastros → **Extensões → Apps Script**.
+2. Apague o que estiver lá e cole `scripts/apps-script/radar.gs`.
+3. **Implantar → Nova implantação → App da Web**: executar como *Eu*, acesso *Qualquer pessoa*.
+4. Copie a URL (termina em `/exec`).
+5. No GitHub: **Settings → Secrets and variables → Actions → Variables** → `NEXT_PUBLIC_RADAR_ENDPOINT`
+   com essa URL. O robô diário usa a mesma variável.
+
+Mexeu no `.gs`? Precisa **implantar de novo** (Implantar → Gerenciar implantações → nova versão).
+Salvar não publica.
+
+Sem a variável o site segue de pé: o formulário aparece igual e o envio explica que o cadastro
+está sendo ligado, oferecendo o Google Forms antigo (`site.radarFormularioAntigo`) como
+alternativa.
+
+### Mapa
+
+Leaflet puro (sem react-leaflet), carregado sob demanda dentro do efeito — só a página do Radar
+paga o peso. Fundo de tiles da CARTO em duas versões, clara e escura, trocando junto com o botão
+de tema; a atribuição do OpenStreetMap e da CARTO é exigida pela licença e não sai do canto do
+mapa. Nenhum ícone padrão do Leaflet é usado (o que evita o clássico marcador quebrado sob
+`basePath`): todo pino é `divIcon` com HTML nosso, estilizado em `globals.css`.
+
+Ao lado do mapa há a **mesma lista em texto**. Não é redundância: mapa sozinho não se navega por
+teclado nem por leitor de tela, e é a lista que sai no HTML.
 
 ## Créditos de autoria
 

@@ -28,7 +28,7 @@ export const faq: FaqItem[] = [
   {
     pergunta: "O que é o Radar Cultural MA?",
     resposta:
-      "É o cadastro de fazedores e fazedoras de cultura do Comitê. Quem se cadastra passa a ser indicado a produtores e curadores e recebe aviso de edital da sua linguagem artística e do seu município — o cadastro fica na página do Radar Cultural deste site.",
+      "É o mapa de quem faz cultura no Maranhão, mantido pelo Comitê. Cada pino é uma pessoa, um coletivo ou uma organização que se cadastrou: clicando na foto aparece o que ela faz e um botão que abre conversa direto no WhatsApp dela. Quem se cadastra passa a ser encontrado por produtores e curadores e recebe aviso de edital da sua linguagem artística e do seu município. O mapa e o cadastro ficam na página do Radar Cultural deste site.",
   },
   {
     pergunta: "Como participar do Comitê?",

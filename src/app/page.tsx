@@ -155,18 +155,27 @@ export default function Home() {
             <div className="flex flex-col items-start gap-5 p-8 sm:p-12">
               <span className="rotulo text-[#FEC44A]">Radar Cultural MA</span>
               <h2 className="max-w-xl text-2xl font-semibold text-white sm:text-3xl">
-                Entre no radar de quem faz cultura no Maranhão
+                Um mapa de quem faz cultura no Maranhão
               </h2>
               <p className="max-w-xl text-white/80">
-                Produtores e curadores passam a te encontrar, e você recebe aviso assim que abrir
-                edital da sua linguagem e da sua cidade.
+                Ache quem toca, filma, dança e produz perto de você e fale direto no WhatsApp da
+                pessoa. Bote seu pino no mapa e passe a ser encontrado — e a receber aviso quando
+                abrir edital da sua linguagem e da sua cidade.
               </p>
-              <Link
-                href="/radar-cultural"
-                className="rounded-sm bg-fixed-ambar px-6 py-3 font-semibold text-fixed-tinta transition hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                Cadastrar meu perfil
-              </Link>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/radar-cultural"
+                  className="rounded-sm bg-fixed-ambar px-6 py-3 font-semibold text-fixed-tinta transition hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  Abrir o mapa
+                </Link>
+                <Link
+                  href="/radar-cultural#cadastro"
+                  className="rounded-sm border border-white/40 px-6 py-3 font-medium text-white transition hover:-translate-y-0.5 hover:border-white hover:bg-white/10"
+                >
+                  Bota meu pino
+                </Link>
+              </div>
             </div>
           </Reveal>
         </Container>

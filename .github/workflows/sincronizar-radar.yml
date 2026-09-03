@@ -1,0 +1,37 @@
+name: Robô do Radar Cultural
+
+on:
+  schedule:
+    # Todo dia, 09:00 em Brasília (UTC-3) = 12:00 UTC.
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run sincronizar-radar
+        env:
+          # Mesma variável que o site usa pro mapa — cadastrada em
+          # Settings → Secrets and variables → Actions → Variables.
+          RADAR_ENDPOINT: ${{ vars.NEXT_PUBLIC_RADAR_ENDPOINT }}
+      - name: Comitar se houver mudança
+        run: |
+          if git diff --quiet -- src/content/radar-auto.json public/radar; then
+            echo "Radar sem novidade — nada a comitar."
+            exit 0
+          fi
+          git config user.name "robo-radar"
+          git config user.email "actions@github.com"
+          git add src/content/radar-auto.json public/radar
+          git commit -m "chore(radar): sincronização diária ($(date -u +%Y-%m-%d))"
+          git push
