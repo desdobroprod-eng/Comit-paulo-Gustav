@@ -13,14 +13,14 @@ const jsonLd = {
 
 export function Faq() {
   return (
-    <section className="border-t border-border py-14">
+    <section className="border-t border-linha py-14">
       <Container className="flex flex-col gap-6">
-        <h2 className="text-2xl font-semibold text-ink">Perguntas frequentes</h2>
+        <h2 className="text-2xl font-semibold text-tinta">Perguntas frequentes</h2>
         <dl className="flex flex-col gap-6">
           {faq.map((item) => (
             <div key={item.pergunta}>
-              <dt className="font-display font-semibold text-ink">{item.pergunta}</dt>
-              <dd className="mt-1.5 text-sm text-ink-soft">{item.resposta}</dd>
+              <dt className="font-display font-semibold text-tinta">{item.pergunta}</dt>
+              <dd className="mt-1.5 text-sm text-tinta-suave">{item.resposta}</dd>
             </div>
           ))}
         </dl>

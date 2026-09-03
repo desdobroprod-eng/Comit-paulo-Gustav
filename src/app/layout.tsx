@@ -1,27 +1,36 @@
 import type { Metadata } from "next";
-import { Fredoka, Work_Sans, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const fredoka = Fredoka({
-  variable: "--font-fredoka",
+/**
+ * Tipografia editorial: serifa de alto contraste nos títulos, sem serifa no
+ * corpo — a mesma dupla do transparencia10. A Fredoka arredondada saiu: era
+ * boa parte da cara de genérico que o Comitê rejeitou.
+ */
+const fraunces = Fraunces({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "600", "700", "900"],
+  display: "swap",
 });
 
-const workSans = Work_Sans({
-  variable: "--font-work-sans",
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
+/**
+ * Aplica o tema salvo antes da primeira pintura. Sem isso o site pisca no
+ * tema errado ao carregar — o problema clássico de troca de tema em site
+ * estático.
+ */
+const scriptTema = `(function(){try{var t=localStorage.getItem("tema");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t)}}catch(e){}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -84,7 +93,10 @@ const jsonLd = [
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${fredoka.variable} ${workSans.variable} ${jetbrainsMono.variable} h-full`}>
+    <html lang="pt-BR" className={`${fraunces.variable} ${inter.variable} h-full`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
+      </head>
       <body className="flex min-h-full flex-col antialiased">
         <script
           type="application/ld+json"

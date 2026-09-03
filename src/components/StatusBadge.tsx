@@ -1,9 +1,9 @@
 import type { StatusEdital } from "@/content/editais";
 
 const styles: Record<StatusEdital, { label: string; className: string }> = {
-  aberto: { label: "Edital aberto", className: "bg-turquoise/15 text-turquoise" },
-  "em-breve": { label: "Abre em breve", className: "bg-amber/20 text-amber-deep" },
-  encerrado: { label: "Encerrado", className: "bg-terracotta/15 text-terracotta" },
+  aberto: { label: "Edital aberto", className: "bg-turquesa/15 text-turquesa" },
+  "em-breve": { label: "Abre em breve", className: "bg-ambar/20 text-ambar-fundo" },
+  encerrado: { label: "Encerrado", className: "bg-terracota/15 text-terracota" },
 };
 
 export function StatusBadge({ status }: { status: StatusEdital }) {

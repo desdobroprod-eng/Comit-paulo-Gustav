@@ -1,98 +1,160 @@
 @import "tailwindcss";
 
+/* ===========================================================================
+   TOKENS — linguagem editorial (papel/tinta) do transparencia10 com as cores
+   aprovadas no manual de marca do Comitê.
+
+   Três camadas de tema, nesta ordem:
+     :root                                  → claro (padrão do site)
+     @media (prefers-color-scheme: dark)    → escuro do sistema, mas só se o
+       :root:not([data-theme="light"])        visitante não escolheu claro
+     :root[data-theme="dark"]               → escolha explícita no botão
+   Cor nenhuma pode existir só dentro de um bloco de tema.
+=========================================================================== */
 :root {
-  --color-bg: #fff8ec;
-  --color-surface: #ffffff;
-  --color-surface-alt: #fbefd9;
-  --color-ink: #221b14;
-  --color-ink-soft: #5c4f3f;
-  --color-ink-faint: #8a7a64;
-  --color-amber: #fea813;
-  --color-amber-deep: #a8620a;
-  --color-violet: #5c60b0;
-  --color-turquoise: #1e8b8e;
-  --color-terracotta: #c96a47;
-  --color-sand: #8f723e;
-  --color-border: rgba(34, 27, 20, 0.14);
-  /* Fixos — não flipam com o tema. Usar em elementos que ficam sempre sobre
-     a mesma superfície saturada (bloco âmbar do hero, badge, CTA invertido),
-     que não escurece/clareia com o tema, então o texto sobre ela também não pode. */
-  --color-fixed-ink: #221b14;
-  --color-fixed-amber: #fea813;
+  --color-papel: #fff8ec;
+  --color-superficie: #ffffff;
+  --color-superficie-alt: #fbefd9;
+  --color-tinta: #221b14;
+  --color-tinta-suave: #5c4f3f;
+  --color-tinta-fraca: #8a7a64;
+  --color-ambar: #fea813;
+  --color-ambar-fundo: #a8620a;
+  --color-terracota: #c96a47;
+  --color-turquesa: #1e8b8e;
+  --color-violeta: #5c60b0;
+  --color-linha: rgba(34, 27, 20, 0.14);
+  --color-linha-forte: rgba(34, 27, 20, 0.3);
+
+  /* Fixos: vivem sobre âmbar sólido, que não muda com o tema — logo o texto
+     sobre ele também não pode mudar. */
+  --color-fixed-tinta: #221b14;
+  --color-fixed-ambar: #fea813;
+
+  --sombra-card: 0 1px 2px rgba(34, 27, 20, 0.05), 0 12px 28px -20px rgba(34, 27, 20, 0.4);
+  --sombra-alta: 0 18px 44px -24px rgba(34, 27, 20, 0.55);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1b1611;
-    --color-surface: #241e17;
-    --color-surface-alt: #2e2519;
-    --color-ink: #f5eee1;
-    --color-ink-soft: #cbbba4;
-    --color-ink-faint: #93826a;
-    --color-amber: #ffb833;
-    --color-amber-deep: #ffd27a;
-    --color-violet: #9a9ee8;
-    --color-turquoise: #5ad0d3;
-    --color-terracotta: #efa07e;
-    --color-sand: #d8b87c;
-    --color-border: rgba(245, 238, 225, 0.14);
+  :root:not([data-theme="light"]) {
+    --color-papel: #14100c;
+    --color-superficie: #1e1811;
+    --color-superficie-alt: #2a2118;
+    --color-tinta: #f7f0e4;
+    --color-tinta-suave: #cbbba4;
+    --color-tinta-fraca: #94836b;
+    --color-ambar: #ffb833;
+    --color-ambar-fundo: #ffd27a;
+    --color-terracota: #efa07e;
+    --color-turquesa: #5ad0d3;
+    --color-violeta: #9a9ee8;
+    --color-linha: rgba(247, 240, 228, 0.14);
+    --color-linha-forte: rgba(247, 240, 228, 0.28);
+    --sombra-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 28px -20px rgba(0, 0, 0, 0.8);
+    --sombra-alta: 0 18px 44px -24px rgba(0, 0, 0, 0.9);
   }
 }
 
+:root[data-theme="dark"] {
+  --color-papel: #14100c;
+  --color-superficie: #1e1811;
+  --color-superficie-alt: #2a2118;
+  --color-tinta: #f7f0e4;
+  --color-tinta-suave: #cbbba4;
+  --color-tinta-fraca: #94836b;
+  --color-ambar: #ffb833;
+  --color-ambar-fundo: #ffd27a;
+  --color-terracota: #efa07e;
+  --color-turquesa: #5ad0d3;
+  --color-violeta: #9a9ee8;
+  --color-linha: rgba(247, 240, 228, 0.14);
+  --color-linha-forte: rgba(247, 240, 228, 0.28);
+  --sombra-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 28px -20px rgba(0, 0, 0, 0.8);
+  --sombra-alta: 0 18px 44px -24px rgba(0, 0, 0, 0.9);
+}
+
 @theme inline {
-  --color-bg: var(--color-bg);
-  --color-surface: var(--color-surface);
-  --color-surface-alt: var(--color-surface-alt);
-  --color-ink: var(--color-ink);
-  --color-ink-soft: var(--color-ink-soft);
-  --color-ink-faint: var(--color-ink-faint);
-  --color-amber: var(--color-amber);
-  --color-amber-deep: var(--color-amber-deep);
-  --color-violet: var(--color-violet);
-  --color-turquoise: var(--color-turquoise);
-  --color-terracotta: var(--color-terracotta);
-  --color-sand: var(--color-sand);
-  --color-border: var(--color-border);
-  --color-fixed-ink: var(--color-fixed-ink);
-  --color-fixed-amber: var(--color-fixed-amber);
-  --font-display: var(--font-fredoka);
-  --font-body: var(--font-work-sans);
-  --font-mono: var(--font-jetbrains-mono);
+  --color-papel: var(--color-papel);
+  --color-superficie: var(--color-superficie);
+  --color-superficie-alt: var(--color-superficie-alt);
+  --color-tinta: var(--color-tinta);
+  --color-tinta-suave: var(--color-tinta-suave);
+  --color-tinta-fraca: var(--color-tinta-fraca);
+  --color-ambar: var(--color-ambar);
+  --color-ambar-fundo: var(--color-ambar-fundo);
+  --color-terracota: var(--color-terracota);
+  --color-turquesa: var(--color-turquesa);
+  --color-violeta: var(--color-violeta);
+  --color-linha: var(--color-linha);
+  --color-linha-forte: var(--color-linha-forte);
+  --color-fixed-tinta: var(--color-fixed-tinta);
+  --color-fixed-ambar: var(--color-fixed-ambar);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-ink);
+  background: var(--color-papel);
+  color: var(--color-tinta);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-display), ui-rounded, system-ui, sans-serif;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
   text-wrap: balance;
+  letter-spacing: -0.015em;
 }
 
-/* Padrão "mosaico de azulejo" do manual de marca — lattice de círculos nas
-   cores secundárias (violeta/turquesa) com pontos de terracota, pensado pra
-   ficar atrás de conteúdo em baixa opacidade (ver .mosaic-layer). */
-:root {
-  --pattern-mosaic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%235C60B0' stroke-width='1.5'%3E%3Ccircle cx='0' cy='0' r='18'/%3E%3Ccircle cx='64' cy='0' r='18'/%3E%3Ccircle cx='0' cy='64' r='18'/%3E%3Ccircle cx='64' cy='64' r='18'/%3E%3Ccircle cx='32' cy='32' r='18'/%3E%3C/g%3E%3Cg fill='none' stroke='%231E8B8E' stroke-width='1.5'%3E%3Ccircle cx='32' cy='0' r='18'/%3E%3Ccircle cx='0' cy='32' r='18'/%3E%3Ccircle cx='64' cy='32' r='18'/%3E%3Ccircle cx='32' cy='64' r='18'/%3E%3C/g%3E%3Cg fill='%23C96A47'%3E%3Ccircle cx='16' cy='16' r='2'/%3E%3Ccircle cx='48' cy='16' r='2'/%3E%3Ccircle cx='16' cy='48' r='2'/%3E%3Ccircle cx='48' cy='48' r='2'/%3E%3C/g%3E%3C/svg%3E");
+/* Rótulo do botão de tema, decidido por CSS (ver BotaoTema.tsx): o site claro
+   oferece "Escuro", o escuro oferece "Claro". Cobre os três estados: sem
+   escolha (sistema), escolha clara e escolha escura. */
+.tema-claro {
+  display: inline;
+}
+.tema-escuro {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tema-claro {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .tema-escuro {
+    display: inline;
+  }
+}
+:root[data-theme="dark"] .tema-claro {
+  display: none;
+}
+:root[data-theme="dark"] .tema-escuro {
+  display: inline;
+}
+:root[data-theme="light"] .tema-claro {
+  display: inline;
+}
+:root[data-theme="light"] .tema-escuro {
+  display: none;
 }
 
-.mosaic-layer {
-  position: absolute;
-  inset: 0;
-  background-image: var(--pattern-mosaic);
-  background-size: 64px 64px;
-  opacity: 0.14;
-  pointer-events: none;
+/* Rótulo pequeno em caixa alta — o "eyebrow" editorial. */
+.rotulo {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-@keyframes fade-up {
+/* ===========================================================================
+   MOVIMENTO
+   A entrada é ADITIVA: o conteúdo já nasce visível e a animação só enfeita.
+   Se o JS não rodar, nada some — a lição escrita no código do transparencia10.
+=========================================================================== */
+@keyframes subir {
   from {
-    opacity: 0;
-    transform: translateY(14px);
+    opacity: 0.001;
+    transform: translateY(22px);
   }
   to {
     opacity: 1;
@@ -100,13 +162,23 @@ h3 {
   }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.6s ease-out both;
+.subir {
+  animation: subir 720ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
 }
 
-/* Quem pediu menos movimento no sistema não recebe movimento nenhum — antes
-   isso cobria só a entrada .animate-fade-up e deixava passar todos os
-   hover:-translate-y espalhados pelos cards e botões. */
+/* Revelado por IntersectionObserver: fica visível se o observer não rodar. */
+.revelar {
+  opacity: 1;
+}
+.revelar[data-visivel="false"] {
+  opacity: 0.001;
+  transform: translateY(22px);
+}
+.revelar[data-visivel="true"] {
+  animation: subir 720ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+
+/* Quem pediu menos movimento não recebe movimento nenhum. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -117,13 +189,12 @@ h3 {
     scroll-behavior: auto !important;
   }
 
-  .animate-fade-up {
+  .subir,
+  .revelar[data-visivel="true"] {
     animation: none;
   }
-
-  /* neutraliza o deslocamento de hover, não só a duração da transição */
-  .hover\:-translate-y-1:hover,
-  .hover\:-translate-y-0\.5:hover {
-    transform: none !important;
+  .revelar[data-visivel="false"] {
+    opacity: 1;
+    transform: none;
   }
 }

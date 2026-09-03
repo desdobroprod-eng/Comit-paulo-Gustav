@@ -20,7 +20,7 @@ export default async function RedirectPage({ params }: { params: Promise<{ slug:
   return (
     <div className="mx-auto flex max-w-lg flex-col items-center gap-3 px-6 py-24 text-center">
       <RedirectClient destino={target.destino} />
-      <p className="text-ink-soft">
+      <p className="text-tinta-suave">
         Redirecionando para {target.label}… se nada acontecer,{" "}
         <a href={target.destino} className="underline">
           toque aqui
