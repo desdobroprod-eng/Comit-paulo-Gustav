@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { CertidaoRow } from "@/components/CertidaoRow";
 import { PageHero } from "@/components/PageHero";
+import { TrackedLink } from "@/components/TrackedLink";
 import { certidoes, guiaOficialSecultMA } from "@/content/certidoes";
 import { esferaLabel, type Esfera } from "@/lib/site";
 
@@ -44,12 +45,13 @@ export default function CertidoesPage() {
             Link fora do ar ou mudou de endereço? A própria SECULT-MA mantém uma página com os
             links que ela cobra nos editais — vale como segunda fonte:
           </p>
-          <a
+          <TrackedLink
             href={guiaOficialSecultMA.url}
+            eventName="clique_guia_certidoes"
             className="mt-2 inline-block text-sm font-medium text-turquoise hover:underline"
           >
             {guiaOficialSecultMA.nome} ↗
-          </a>
+          </TrackedLink>
         </div>
       </Container>
     </>

@@ -44,7 +44,7 @@ export function EditalCard({ edital }: { edital: Edital }) {
         eventParams={{ edital_id: edital.id, esfera: edital.esfera }}
         className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-lg bg-fixed-amber px-4 py-2 font-display text-sm font-semibold text-fixed-ink transition hover:-translate-y-0.5 hover:shadow-md"
       >
-        Ver edital completo ↗
+        {edital.linkRotulo ?? "Ver edital completo"} ↗
       </TrackedLink>
     </article>
   );

@@ -18,21 +18,21 @@ export const faq: FaqItem[] = [
   {
     pergunta: "Tem edital da Lei Paulo Gustavo aberto agora no Maranhão?",
     resposta:
-      "Não sempre — e é bom checar antes de sair procurando. Em comitepaulogustavo.ma/editais o Comitê mostra o que está de fato aberto agora no Estado (SECMA) e em São Luís (SECULT-SL), identificando se é um edital da própria Lei Paulo Gustavo ou da Política Nacional Aldir Blanc (PNAB), o programa federal irmão administrado pelas mesmas secretarias — as duas coisas não são a mesma lei, e o site nunca apresenta uma pela outra. Pra conferir direto na fonte oficial, sem depender do Comitê pra isso, veja a SECMA e a Prefeitura de São Luís.",
+      "Não sempre — e é bom checar antes de sair procurando. Na página de editais deste site o Comitê mostra o que está de fato aberto agora no Estado (SECMA) e em São Luís (SECULT-SL), identificando se é um edital da própria Lei Paulo Gustavo ou da Política Nacional Aldir Blanc (PNAB), o programa federal irmão administrado pelas mesmas secretarias — as duas coisas não são a mesma lei, e o site nunca apresenta uma pela outra. Pra conferir direto na fonte oficial, sem depender do Comitê pra isso, veja a SECMA e a Prefeitura de São Luís.",
   },
   {
     pergunta: "Como emitir certidão negativa para participar de edital cultural no Maranhão?",
     resposta:
-      "Em geral você vai precisar de certidão negativa federal (Receita Federal/PGFN), estadual (SEFAZ-MA) e, pra quem é de São Luís, municipal (SEMFAZ). Se tiver empresa, some a isso o Certificado de Regularidade do FGTS e a Certidão Negativa de Débitos Trabalhistas. O Comitê reúne o link oficial de emissão de cada uma em comitepaulogustavo.ma/certidoes.",
+      "Em geral você vai precisar de certidão negativa federal (Receita Federal/PGFN), estadual (SEFAZ-MA) e, pra quem é de São Luís, municipal (SEMFAZ). Se tiver empresa, some a isso o Certificado de Regularidade do FGTS e a Certidão Negativa de Débitos Trabalhistas. O Comitê reúne o link oficial de emissão de cada uma na página de certidões deste site.",
   },
   {
     pergunta: "O que é o Radar Cultural MA?",
     resposta:
-      "É o cadastro de fazedores e fazedoras de cultura do Comitê. Quem se cadastra passa a ser indicado a produtores e curadores e recebe aviso de edital da sua linguagem artística e do seu município — o cadastro fica em comitepaulogustavo.ma/radar-cultural.",
+      "É o cadastro de fazedores e fazedoras de cultura do Comitê. Quem se cadastra passa a ser indicado a produtores e curadores e recebe aviso de edital da sua linguagem artística e do seu município — o cadastro fica na página do Radar Cultural deste site.",
   },
   {
     pergunta: "Como participar do Comitê?",
     resposta:
-      "É só entrar em um dos grupos de WhatsApp ou seguir o Instagram do Comitê, listados em comitepaulogustavo.ma/participe. Não precisa ser filiado a entidade nenhuma — o Comitê é aberto a qualquer fazedor ou fazedora de cultura do Maranhão.",
+      "É só entrar em um dos grupos de WhatsApp ou seguir o Instagram do Comitê, listados na página Participe deste site. Não precisa ser filiado a entidade nenhuma — o Comitê é aberto a qualquer fazedor ou fazedora de cultura do Maranhão.",
   },
 ];

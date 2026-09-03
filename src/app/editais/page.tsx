@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { EditalCard } from "@/components/EditalCard";
 import { PageHero } from "@/components/PageHero";
+import { TrackedLink } from "@/components/TrackedLink";
 import { editais, fontesOficiais } from "@/content/editais";
 import { esferaLabel } from "@/lib/site";
 
@@ -43,9 +44,14 @@ export default function EditaisPage() {
           <ul className="mt-4 flex flex-col gap-2">
             {Object.entries(fontesOficiais).map(([esfera, fonte]) => (
               <li key={esfera}>
-                <a href={fonte.url} className="text-sm font-medium text-turquoise hover:underline">
+                <TrackedLink
+                  href={fonte.url}
+                  eventName="clique_fonte_oficial"
+                  eventParams={{ esfera }}
+                  className="text-sm font-medium text-turquoise hover:underline"
+                >
                   {esferaLabel[esfera as keyof typeof esferaLabel]} — {fonte.nome} ↗
-                </a>
+                </TrackedLink>
               </li>
             ))}
           </ul>

@@ -23,6 +23,22 @@ export interface Edital {
    * pede confirmação antes de divulgar, sem ser conteúdo fabricado.
    */
   confirmarNaFonte?: boolean;
+  /**
+   * Rótulo do botão. Quando `linkOficial` aponta para o perfil do órgão (e não
+   * para a página do edital específico), o rótulo padrão "Ver edital completo"
+   * promete mais do que o link entrega — daí poder sobrescrever.
+   */
+  linkRotulo?: string;
+}
+
+/** Normaliza URL para deduplicar (ignora query, âncora, barra final e caixa). */
+function chaveUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    return `${u.host}${u.pathname}`.replace(/\/+$/, "").toLowerCase();
+  } catch {
+    return url.trim().replace(/\/+$/, "").toLowerCase();
+  }
 }
 
 interface EditalAuto {
@@ -61,7 +77,12 @@ const editaisManuais: Edital[] = [
     orgao: "Secretaria de Estado da Cultura do Maranhão (SECMA)",
     areas: ["Política Nacional Aldir Blanc (PNAB)"],
     status: "aberto",
-    linkOficial: "https://www.cultura.ma.gov.br/programas-ou-campanhas/editais-secma",
+    // Perfil do órgão na Prosas — fonte determinada pelo Comitê. Enquanto a URL
+    // do edital específico não for conhecida, o botão leva ao perfil e o rótulo
+    // diz exatamente isso.
+    linkOficial:
+      "https://prosas.com.br/patrocinadores/1399-secretaria-de-estado-da-cultura-do-maranhao?subdominio=prosas",
+    linkRotulo: "Ver na Prosas",
     resumo:
       "Chamamento da SECMA no âmbito da Política Nacional Aldir Blanc (PNAB) — não é edital da Lei Paulo Gustavo, mas programa federal irmão, administrado pela mesma secretaria.",
     confirmarNaFonte: true,
@@ -73,24 +94,30 @@ const editaisManuais: Edital[] = [
     orgao: "Secretaria Municipal de Cultura de São Luís (SECULT-SL)",
     areas: ["Política Nacional Aldir Blanc (PNAB)"],
     status: "aberto",
-    linkOficial: "https://www.saoluis.ma.gov.br/secult/editais",
+    linkOficial: "https://prosas.com.br/empreendedores/3547-secretaria-municipal-de-cultura-de-sao-luis",
+    linkRotulo: "Ver na Prosas",
     resumo:
       "Referência a um chamamento da SECULT-SL no âmbito da Política Nacional Aldir Blanc (PNAB) encontrada nesta busca, sem confirmação direta na fonte municipal — não é edital da Lei Paulo Gustavo.",
     confirmarNaFonte: true,
   },
 ];
 
-const linksManuais = new Set(editaisManuais.map((e) => e.linkOficial));
+const idsManuais = new Set(editaisManuais.map((e) => e.id));
+const linksManuais = new Set(editaisManuais.map((e) => chaveUrl(e.linkOficial)));
 
 /**
- * Editais detectados pelo robô semanal (src/app/api/cron/atualizar-editais)
- * nas páginas oficiais de editais. Entram com status "aberto" por padrão e
- * marcados como detectadoAutomaticamente — a UI avisa que prazo/valor
- * precisam ser confirmados na fonte. Links já cobertos manualmente não se
- * duplicam aqui.
+ * Editais detectados pelo robô semanal (scripts/atualizar-editais.ts) nos
+ * perfis oficiais da Prosas. Entram com status "aberto" por padrão e marcados
+ * como detectadoAutomaticamente — a UI avisa que prazo/valor precisam ser
+ * confirmados na fonte.
+ *
+ * A deduplicação é por id E por URL normalizada: desde que os itens manuais
+ * passaram a apontar para o perfil do órgão na Prosas — que é exatamente a
+ * página que o robô varre —, comparar a string crua da URL deixava passar
+ * duplicata por diferença de query string ou barra final.
  */
 const editaisDetectados: Edital[] = editaisAuto
-  .filter((e) => !linksManuais.has(e.linkOficial))
+  .filter((e) => !idsManuais.has(e.id) && !linksManuais.has(chaveUrl(e.linkOficial)))
   .map((e) => ({
     id: e.id,
     titulo: e.titulo,

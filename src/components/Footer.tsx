@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
 import { MosaicLayer } from "./MosaicLayer";
+import { TrackedLink } from "./TrackedLink";
 import { basePath, site } from "@/lib/site";
 
 export function Footer() {
@@ -19,15 +20,30 @@ export function Footer() {
         <p className="font-medium text-ink">{site.nomeOficial}</p>
         <p>{site.tagline}</p>
         <div className="flex flex-wrap gap-4 pt-2">
-          <a href={site.redes.instagramMA} className="hover:text-ink">
+          <TrackedLink
+            href={site.redes.instagramMA}
+            eventName="clique_rede_social"
+            eventParams={{ rede: "instagram_ma", origem: "rodape" }}
+            className="hover:text-ink"
+          >
             Instagram do Comitê
-          </a>
-          <a href={site.redes.instagramNacional} className="hover:text-ink">
+          </TrackedLink>
+          <TrackedLink
+            href={site.redes.instagramNacional}
+            eventName="clique_rede_social"
+            eventParams={{ rede: "instagram_nacional", origem: "rodape" }}
+            className="hover:text-ink"
+          >
             Instagram — Movimento nacional
-          </a>
-          <a href={site.redes.minc} className="hover:text-ink">
+          </TrackedLink>
+          <TrackedLink
+            href={site.redes.minc}
+            eventName="clique_rede_social"
+            eventParams={{ rede: "minc", origem: "rodape" }}
+            className="hover:text-ink"
+          >
             Lei Paulo Gustavo no gov.br
-          </a>
+          </TrackedLink>
           <Link href="/participe" className="hover:text-ink">
             Participe
           </Link>
